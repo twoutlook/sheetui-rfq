@@ -139,6 +139,9 @@ Ext.onReady(function () {
             {sheet: 9, row: 10, col: 2, json: {ti: "0px", data: '--- temp001d 5/11 18:39 ---'}}, //气密性测试 ： 
             {sheet: 9, row: 11, col: 1, json: {ta: 'center', data: '1'}},
             {sheet: 9, row: 11, col: 2, json: {ti: "0px", data: '導出含基本格式及方格底色 '}}, //气密性测试 ： 
+           {sheet: 9, row: 12, col: 2, json: {ti: "0px", data: '--- to make real Excel file 5/19 11:44 ---'}}, //气密性测试 ： 
+            {sheet: 9, row: 13, col: 1, json: {ta: 'center', data: '1'}},
+            {sheet: 9, row: 13, col: 2, json: {ti: "0px", data: '用戶要求要有EXCEL公式'}}, //气密性测试 ： 
             //
             //
             //筛选&包装
