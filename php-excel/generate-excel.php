@@ -24,8 +24,8 @@ function getHttpToDownload($stamp) {
         $result_path.=$paths[$i] . "/";
 //    echo "<h1>$result_path</h1>";
     }
-//    $result_path.="results/RFQ" . $stamp . ".xlsx";
-    $result_path="php-excel/results/RFQ" . $stamp . ".xlsx";
+    $result_path.="results/RFQ" . $stamp . ".xlsx";
+//    $result_path="php-excel/results/RFQ" . $stamp . ".xlsx";
     
     
 //    echo "<h1>$result_path</h1>";
