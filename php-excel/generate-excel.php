@@ -24,7 +24,7 @@ function getHttpToDownload($stamp) {
         $result_path.=$paths[$i] . "/";
 //    echo "<h1>$result_path</h1>";
     }
-    $result_path.="results/RFQ_" . $stamp . ".xlsx";
+    $result_path.="results/RFQ" . $stamp . ".xlsx";
 //    echo "<h1>$result_path</h1>";
     return $result_path;
 }
@@ -53,7 +53,7 @@ require_once '../Classes/PHPExcel.php';
 //echo "pathinfo(__FILE__, PATHINFO_BASENAME)===> ". pathinfo(__FILE__, PATHINFO_BASENAME) , EOL;
 //echo "pathinfo(__FILE__, PATHINFO_DIRNAME)===> ". pathinfo(__FILE__, PATHINFO_DIRNAME) , EOL;
 $stamp = time();
-$defaultOutputFile = pathinfo(__FILE__, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . "results" . DIRECTORY_SEPARATOR . "RFQ-$stamp.xlsx";
+$defaultOutputFile = pathinfo(__FILE__, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR . "results" . DIRECTORY_SEPARATOR . "RFQ$stamp.xlsx";
 //echo "\$defaultOutputFile===> ".$defaultOutputFile , EOL;
 // Create new PHPExcel object
 //echo date('H:i:s') , " Create new PHPExcel object" , EOL;

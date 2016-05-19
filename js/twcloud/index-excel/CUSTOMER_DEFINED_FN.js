@@ -28,9 +28,24 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
             function (data, status) {
 //                alert("Data: " + data + "\nStatus: " + status);
                 if (status === "success") {
-                    alert(data);
+                    console.log(data);
+
+                    var cells = [];
+                    cells.push({
+                        sheet: 1,
+                        row: 5,
+                        col: 1,
+                        json: { data: "下載", link:data} 
+//                        json: { data:data} 
+                    });
+                    SHEET_API.updateCells(SHEET_API_HD, cells);
+
+
+//                    alert(data);
                 } else {
-                    alert("not successful");
+                    console.log("CUSTOM_BUTTON_CLICK_CALLBACK_FN002 failed");
+//                  
+//                    alert("not successful");
                 }
 
 //             $("#div-msg").html(data).css("color", "gray").css("fontSize", "16px").show(100);
