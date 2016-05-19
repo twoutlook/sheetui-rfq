@@ -30,6 +30,8 @@ function getHttpToDownload($stamp) {
     
 //    echo "<h1>$result_path</h1>";
     return $result_path;
+//    return '<h1>'.$result_path.'</h1>';
+    
 }
 
 //echo "<h1>xxx $name 在 $city </h1>";
@@ -114,9 +116,28 @@ $callTime = $callEndTime - $callStartTime;
 //echo date('H:i:s') , " 檔案生成 " , $defaultOutputFile;
 //echo $defaultOutputFile;
 //echo "|";
-echo getHttpToDownload($stamp);
+
 //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
 //echo 'Check Excel file NEED TO GET PHP FILE    --- results/result123.xlsx' , EOL;
+//curl_get_file_contents(getHttpToDownload($stamp));
 
+echo getHttpToDownload($stamp);
+//header("Content-disposition: attachment; filename=huge_document.pdf");
+//header("Content-type: application/pdf");
+//readfile("huge_document.pdf");
 
-
+//
+//
+//echo getHttpToDownload($stamp);
+////http://stackoverflow.com/questions/10088932/how-to-download-a-file-from-server-using-php-code/10088979
+//function curl_get_file_contents($URL) {
+//  $c = curl_init();
+//  curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+//  curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+//  curl_setopt($c, CURLOPT_URL, $URL);
+//  $contents = curl_exec($c);
+//  $err  = curl_getinfo($c,CURLINFO_HTTP_CODE);
+//  curl_close($c);
+//  if ($contents) return $contents;
+//  else return FALSE;
+//}

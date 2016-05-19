@@ -6,6 +6,7 @@
 
 
 function fnExcelReport() {
+    alert(  "fnExcelReport");
     var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
     tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
     tab_text = tab_text + '<x:Name>RFQ-export</x:Name>';
@@ -33,4 +34,9 @@ function fnExcelReport() {
         $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
         $('#test').attr('download', 'RFQ-export.xls');
     }
+}
+
+// 
+function fnExcelReport2(filename) {
+  alert(filename);
 }

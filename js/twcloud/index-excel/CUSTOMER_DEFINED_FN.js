@@ -21,15 +21,17 @@ function AUTO_FILL_CUSTOMER_DATA_BY_EMPLOYEEID(employeeId, sheetId, row, col) {
 //http://jsfiddle.net/h42y4ke2/21/ --- this one might work for current enviroment
 function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
+    var download_url = "";
     $.post("php-excel/generate-excel.php", {
         name: "Mark",
         city: "昆山"
     },
             function (data, status) {
+
 //                alert("Data: " + data + "\nStatus: " + status);
                 if (status === "success") {
                     console.log(data);
-
+                    download_url = data;
                     var cells = [];
                     cells.push({
                         sheet: 1,
@@ -38,14 +40,28 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
 //                        json: { data: "下載", link:data} 
                         json: {data: data}
                     },
-                    {
-                        sheet: 1,
-                        row: 114,
-                        col: 1,
+                            {
+                                sheet: 1,
+                                row: 114,
+                                col: 1,
 //                        json: { data: "下載", link:data} 
-                        json: {data: data}
-                    });
+                                json: {data: data}
+                            });
                     SHEET_API.updateCells(SHEET_API_HD, cells);
+                    //
+//window.location="download.action?para1="+"php-excel/results/RFQ1463652522.xlsx";
+//window.location=data;
+
+
+//    OpenWindow = window.open("", "newwin", "height=640, width=800,toolbar=no,scrollbars=yes,menubar=no");
+////写成一行
+//  
+//    OpenWindow.document.write('  <head>  ');
+// OpenWindow.document.write('  < META HTTP - EQUIV = "REFRESH" CONTENT = "10.0;URL=download.php" >  ');
+//   OpenWindow.document.write('  </head>  ');
+//     OpenWindow.document.close();
+
+
 
 
 //                    alert(data);
@@ -98,6 +114,9 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
     console.log("=== >>> temp001c <<< CUSTOM_BUTTON_CLICK_CALLBACK_FN ===");
     //   var htmlArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 166, 167, 168, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 131, 106, 107, 108, 109, 110, 111, 112, 113, 114];
 
+//<META HTTP-EQUIV="REFRESH" CONTENT="10.0;URL=download.php">
+
+
 
 //----------------------
     OpenWindow = window.open("", "newwin", "height=640, width=800,toolbar=no,scrollbars=yes,menubar=no");
@@ -127,8 +146,11 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
     </style> \
     ';
     OpenWindow.document.write(strCss);
-//     OpenWindow.document.write('<h1>ver2</h1><a href="#" id="test" onClick="fnExcelReport();">download as Excel</a>');
+//     OpenWindow.document.write('<h1>ver2</h1><a href="#" id="test" onClick="fnExcelReport2();">含基本加總</a>');
     OpenWindow.document.write('<h1>ver3 <a href="#" id="test" onClick="fnExcelReport();">下載 Excel 檔案</a></h1>');
+//    OpenWindow.document.write('<h1>ver3 <a href="#" id="test" onClick="fnExcelReport2( "abcde");">下載 Excel 檔案</a></h1>');
+    
+//    OpenWindow.document.write('<h1>ver4 <a href="#" id="test2" onClick="fnExcelReport2("abc");">v4下載 Excel 檔案</a></h1>');
     var str = "<table  id='myTable'>";
     var row = 0;
 //   for (var i = 0; i < htmlArr.length; i++) {
@@ -250,10 +272,15 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
     OpenWindow.document.write("</BODY>");
     OpenWindow.document.write("</HTML>");
     OpenWindow.document.close();
+
+
+
+
 }
 
 
 function CUSTOM_BUTTON_CLICK_CALLBACK_FN(value, row, column, sheetId, cellObj, store) {
+    
     var dataVal = "CUSTOM_BUTTON_CLICK_CALLBACK_FN is called and cell button is clicked @ Row: " + row + "; Colum: " + column;
     var cells = [{sheet: sheetId, row: 12, col: 2, json: {data: dataVal}}];
 //	SHEET_API.updateCells(SHEET_API_HD, cells);}
