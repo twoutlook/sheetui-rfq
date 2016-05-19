@@ -20,6 +20,24 @@ function AUTO_FILL_CUSTOMER_DATA_BY_EMPLOYEEID(employeeId, sheetId, row, col) {
 //http://jsfiddle.net/insin/cmewv/
 //http://jsfiddle.net/h42y4ke2/21/ --- this one might work for current enviroment
 function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj, store) {
+    //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
+    $.post("php-excel/generate-excel.php", {
+        name: "Mark",
+        city: "昆山"
+    },
+            function (data, status) {
+//                alert("Data: " + data + "\nStatus: " + status);
+                if (status === "success") {
+                    alert(data);
+                } else {
+                    alert("not successful");
+                }
+
+//             $("#div-msg").html(data).css("color", "gray").css("fontSize", "16px").show(100);
+            });
+
+    return;
+
     var dataVal = "CUSTOM_BUTTON_CLICK_CALLBACK_FN is called and cell button is clicked @ Row: " + row + "; Colum: " + column;
     var cells = [{sheet: sheetId, row: 12, col: 2, json: {data: dataVal}}];
 //	SHEET_API.updateCells(SHEET_API_HD, cells);}
@@ -142,7 +160,7 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
 
     }
     function getDataAlign(i) {
-        var arrDataCenter = [7, 8, 9, 10,12,17,18,29,40,65,70,74,79,85,];
+        var arrDataCenter = [7, 8, 9, 10, 12, 17, 18, 29, 40, 65, 70, 74, 79, 85, ];
         if (isItemInArr(i, arrDataCenter)) {
             return  " align='center' ";//#F9E79F
         }
@@ -152,18 +170,18 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
         var arrDdl = [10, 12, 40, 65, 70, 74, 79];
         var arrInput = [11, 16, 19, 20, 21, 22, 33, 42, 47, 50, 54, 57, 61, 68, 71, 75, 80, 81, 82, 86, 87, 88, 89, 90, 93, 94, 97, 101, 103, 108, 109];
 
-        var strAlign= getDataAlign(i);
+        var strAlign = getDataAlign(i);
 
 
         //      var colorStepEnd = "#E6E6E6";
         if (isItemInArr(i, arrInput)) {
-            return  "<td " + strAlign+ " style='background:#F4D03F'>" + data + "</td>";//#F9E79F
+            return  "<td " + strAlign + " style='background:#F4D03F'>" + data + "</td>";//#F9E79F
         } else if (isItemInArr(i, arrDdl)) {
             return  "<td " + strAlign + "  style='background:#F9E79F'>" + data + "</td>";//#F9E79F
         } else if (isItemInArr(i, arrStepEnd)) {
             return  "<td " + strAlign + "  style='background:#E6E6E6'>" + data + "</td>";//#F9E79F
         }
-        return  "<td " + strAlign + ">"+ data + "</td>";
+        return  "<td " + strAlign + ">" + data + "</td>";
 
     }
 
