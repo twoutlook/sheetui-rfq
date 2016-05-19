@@ -356,8 +356,8 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
                         sheet: 1,
                         row: 114,
                         col: 1,
-//                        json: { data: "下載", link:data} 
-                        json: {data: data}
+                        json: { data: "下載", link:"http://"+data} 
+//                        json: {data: data}
                     });
                     SHEET_API.updateCells(SHEET_API_HD, cells);
 

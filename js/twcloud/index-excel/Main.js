@@ -714,8 +714,10 @@ Ext.onReady(function () {
             {sheet: 1, row: 112, col: 1, json: {data: ""}},
             {sheet: 1, row: 112, col: 2, json: {data: "总计（美金）： "}},
             {sheet: 1, row: 112, col: 3, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(C111/6.35)"}},
-                {sheet: 1, row: 113, col: 1, json: {data: "生成", it: "button", btnStyle: "color: blue; font-weight: bold;", onBtnClickFn: "CUSTOM_BUTTON_CLICK_CALLBACK_FN002"}},
-        
+                {sheet: 1, row: 113, col: 1, json: {data: "生成", it: "button", btnStyle: "color: blue; font-weight: bold;", onBtnClickFn: "CUSTOM_BUTTON_CLICK_CALLBACK_FN002"}}
+        //json: { data: "www.google.com", link: "www.google.com"} },
+//                    {sheet: 1, row: 113, col: 2, json: { data: "www.google.com", link: "http://www.google.com"} },
+  
         ]
     };
     // =============================================================================================
