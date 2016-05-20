@@ -1,7 +1,9 @@
 <?php
 
-$name = $_POST['name'];
-$city = $_POST['city'];
+//$name = $_POST['name'];
+//$city = $_POST['city'];
+$data = $_POST['data'];
+
 
 function getHttpToDownload($stamp) {
     $stamp = time();
@@ -78,19 +80,16 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
 // Add some data
 //echo date('H:i:s') , " Add some data" , EOL;
 $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A1', $name)
-        ->setCellValue('B2', $city)
-        ->setCellValue('C1', 'Hello')
-        ->setCellValue('D2', 'world!');
+        ->setCellValue('A1', $data)
+        ->setCellValue('A2', "座標轉換的問題");
 
-// Miscellaneous glyphs, UTF-8
-$objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A4', 'Miscellaneous glyphs')
-        ->setCellValue('A5', '中文可以嗎?éàèùâêîôûëïüÿäöüç');
+
+
+
 
 // Rename worksheet
 //echo date('H:i:s') , " Rename worksheet" , EOL;
-$objPHPExcel->getActiveSheet()->setTitle('Simple');
+$objPHPExcel->getActiveSheet()->setTitle('RFQ');
 
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet

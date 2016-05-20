@@ -91,7 +91,7 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN003(value, row, column, sheetId, cellObj
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
     var download_url = "";
 
-    var datav2= getCellsInfo();
+    var datav2 = getCellsInfo();
 
 
     $.post("php-excel/generate-excel.php", {
@@ -333,14 +333,15 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
     var download_url = "";
 
+    var data_in_json = [{a: "111", b: "222", c: "333", d: "444"}, {a: "第二行111", b: "222", c: "333", d: "444"}, {a: "第三行111", b: "222", c: "333", d: "444"}];
 
-
-    $.post("php-excel/make-excel.php", {
-// 
-//    $.post("php-excel/01sample.php", {
-        name: "Mark",
-        city: "昆山"
-    },
+    $.post("php-excel/make-excel.php",
+//            {
+//                name: "Mark",
+//                city: "昆山"
+//
+//            },
+            {data: JSON.stringify(data_in_json)},
             function (data, status) {
                 if (status === "success") {
                     console.log(data);
@@ -352,12 +353,12 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
                         col: 1,
 //                        json: { data: "下載", link:data} 
 //                        json: {data: data}
-                            json: { data: "下載", link:"http://"+data} 
+                        json: {data: "下載", link: "http://" + data}
                     }, {
                         sheet: 1,
                         row: 114,
                         col: 1,
-                        json: { data: "下載", link:"http://"+data} 
+                        json: {data: "下載", link: "http://" + data}
 //                        json: {data: data}
                     });
                     SHEET_API.updateCells(SHEET_API_HD, cells);
