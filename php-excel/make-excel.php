@@ -82,10 +82,16 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
 
 //for ($i=0;$i<count($json_array);$i++){
     
-for ($i=0;$i<32;$i++){
+//for ($i=0;$i<32;$i++){ // FIRST ERR???
+//   $objPHPExcel->setActiveSheetIndex(0)
+//        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
+//}
+
+for ($i=0;$i<count($json_array);$i++){
    $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
 }
+
 
 $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('A1', $data)
