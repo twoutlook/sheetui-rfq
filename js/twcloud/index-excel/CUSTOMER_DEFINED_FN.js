@@ -329,13 +329,13 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN003(value, row, column, sheetId, cellObj
 
 }
 
-function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj, store) {
+function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
     var download_url = "";
 
 
 
-    $.post("php-excel/generate-excel.php", {
+    $.post("php-excel/make-excel.php", {
 // 
 //    $.post("php-excel/01sample.php", {
         name: "Mark",
@@ -351,7 +351,8 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN002(value, row, column, sheetId, cellObj
                         row: 5,
                         col: 1,
 //                        json: { data: "下載", link:data} 
-                        json: {data: data}
+//                        json: {data: data}
+                            json: { data: "下載", link:"http://"+data} 
                     }, {
                         sheet: 1,
                         row: 114,

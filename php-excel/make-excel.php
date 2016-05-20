@@ -78,8 +78,8 @@ $objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
 // Add some data
 //echo date('H:i:s') , " Add some data" , EOL;
 $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A1', 'Hello')
-        ->setCellValue('B2', 'world!')
+        ->setCellValue('A1', $name)
+        ->setCellValue('B2', $city)
         ->setCellValue('C1', 'Hello')
         ->setCellValue('D2', 'world!');
 
