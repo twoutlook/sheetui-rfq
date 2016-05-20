@@ -79,15 +79,17 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
 
 // Add some data
 //echo date('H:i:s') , " Add some data" , EOL;
-//$objPHPExcel->setActiveSheetIndex(0)
-//        ->setCellValue('A1', $json_array[1]['data'])
-//        ->setCellValue('A2', "座標轉換的問題");
-for ($i=0;$i<count($json_array);$i++){
+
+//for ($i=0;$i<count($json_array);$i++){
+    
+for ($i=0;$i<32;$i++){
    $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
 }
 
-
+$objPHPExcel->setActiveSheetIndex(0)
+        ->setCellValue('A1', $data)
+        ->setCellValue('A2', "座標轉換的問題");
 
 
 // Rename worksheet
