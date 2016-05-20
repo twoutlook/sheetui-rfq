@@ -334,7 +334,9 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
 
     var cellData = "";
 
-    var data_in_json = [{pos: "A1", data: "很有挑戰"}, {pos: "A2", data: "思考"}, {pos: "A3", data: "行動"}];
+//    var data_in_json = [{pos: "A1", data: "很有挑戰"}, {pos: "A2", data: "思考"}, {pos: "A3", data: "行動"}];
+    var data_in_json = [];
+    
 
     var sheet = 1;
     var row = 0;

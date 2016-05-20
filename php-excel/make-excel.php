@@ -93,9 +93,9 @@ for ($i=0;$i<count($json_array);$i++){
 }
 
 
-$objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A1', $data)
-        ->setCellValue('A2', "座標轉換的問題");
+//$objPHPExcel->setActiveSheetIndex(0)
+//        ->setCellValue('A1', $data)
+//        ->setCellValue('A2', "座標轉換的問題");
 
 
 // Rename worksheet
