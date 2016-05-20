@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/xampp/htdocs/sheetui-rfq/js/twcloud/index-excel/Main.js</file>
-            <file>file:/D:/xampp/htdocs/sheetui-rfq/js/jquery/html-table-to-excel.js</file>
+            <file>file:/D:/xampp/htdocs/sheetui-rfq/php-excel/make-excel.php</file>
+            <file>file:/D:/xampp/htdocs/sheetui-rfq/js/twcloud/index-excel/CenterPanel.js</file>
             <file>file:/D:/xampp/htdocs/sheetui-rfq/js/twcloud/index-excel/CUSTOMER_DEFINED_FN.js</file>
-            <file>file:/D:/xampp/htdocs/sheetui-rfq/index.html</file>
-            <file>file:/D:/xampp/htdocs/sheetui-rfq/php-excel/generate-excel.php</file>
         </group>
     </open-files>
 </project-private>

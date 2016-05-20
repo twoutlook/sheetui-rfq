@@ -329,6 +329,24 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN003(value, row, column, sheetId, cellObj
 
 }
 
+
+function getData(cellData){
+    if (cellData.cal) {
+    var formula = cellData.arg;
+    var value = cellData.value;
+    var result = cellData.data;
+    var format = cellData.fm;
+    var detailFormat = cellData.dfm;
+    return value;
+} else {
+    var result = cellData.data;
+    var format = cellData.fm;
+    var detailFormat = cellData.dfm;
+    return result;
+}
+}
+
+
 function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
 

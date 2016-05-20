@@ -5,6 +5,20 @@
 $data = $_POST['data']; // 傳過來的是string
 $json_array = json_decode($data, true);
 
+
+// dropdown list problem
+// 1. === might cause err
+// 2. when selected, need to remove <span style="padding-left:20px;font-size:0px;">&nbsp;</span>
+// A360<span style="padding-left:20px;font-size:0px;">&nbsp;</span>
+function fix01($str){
+ 
+    $str2=str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>','',$str);
+    $str3=str_replace('===','≡≡≡',$str2);
+    
+    return $str3;
+}
+
+
 function getHttpToDownload($stamp) {
     $stamp = time();
 
@@ -13,7 +27,6 @@ function getHttpToDownload($stamp) {
 //    echo "<h1>$host</h1>";
     $script = $_SERVER['REQUEST_URI'];
 //    echo "<h1>$script</h1>";
-
 //$paths =  explode('"'+DIRECTORY_SEPARATOR+'"',$script );
 //$paths =  explode(DIRECTORY_SEPARATOR,$script );
     $paths = explode('/', $script);
@@ -28,12 +41,9 @@ function getHttpToDownload($stamp) {
     }
     $result_path.="results/RFQ" . $stamp . ".xlsx";
 //    $result_path="php-excel/results/RFQ" . $stamp . ".xlsx";
-    
-    
 //    echo "<h1>$result_path</h1>";
     return $result_path;
 //    return '<h1>'.$result_path.'</h1>';
-    
 }
 
 //echo "<h1>xxx $name 在 $city </h1>";
@@ -66,6 +76,7 @@ $defaultOutputFile = pathinfo(__FILE__, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR 
 //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
 $objPHPExcel = new PHPExcel();
 
+$data_width = 36;
 // Set document properties
 //echo date('H:i:s') , " Set document properties" , EOL;
 $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
@@ -75,29 +86,37 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
         ->setDescription("RFQ generated using PHP classes.")
         ->setKeywords("office PHPExcel php")
         ->setCategory("Test result file");
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
+$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(36);
+$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth($data_width);
+$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth($data_width);
+$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth($data_width);
+$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth($data_width);
+$objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth($data_width);
+$objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth($data_width);
 
 
 // Add some data
 //echo date('H:i:s') , " Add some data" , EOL;
-
 //for ($i=0;$i<count($json_array);$i++){
-    
 //for ($i=0;$i<32;$i++){ // FIRST ERR???
 //   $objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
 //}
 
-for ($i=0;$i<count($json_array);$i++){
-   $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
+
+
+
+
+for ($i = 0; $i < count($json_array); $i++) {
+    $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue($json_array[$i]['pos'],fix01( $json_array[$i]['data']));
 }
 
 
 //$objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue('A1', $data)
 //        ->setCellValue('A2', "座標轉換的問題");
-
-
 // Rename worksheet
 //echo date('H:i:s') , " Rename worksheet" , EOL;
 $objPHPExcel->getActiveSheet()->setTitle('RFQ');
@@ -126,7 +145,6 @@ $callTime = $callEndTime - $callStartTime;
 //echo date('H:i:s') , " 檔案生成 " , $defaultOutputFile;
 //echo $defaultOutputFile;
 //echo "|";
-
 //echo 'Call time to write Workbook was ' , sprintf('%.4f',$callTime) , " seconds" , EOL;
 //echo 'Check Excel file NEED TO GET PHP FILE    --- results/result123.xlsx' , EOL;
 //curl_get_file_contents(getHttpToDownload($stamp));
