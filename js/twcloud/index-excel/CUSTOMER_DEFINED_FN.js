@@ -341,9 +341,15 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
     var col = 0;
     for (var i = 1; i < 113; i++) {
 //        row=i;
-        col = 3
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, col);
-        var one_json = {pos:"C"+i,data: cellData.data};
+//        col = 3
+        // col A
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 1);
+        var one_json = {pos:"A"+i,data: cellData.data};
+        data_in_json.push(one_json);
+
+        // col B
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 2);
+        var one_json = {pos:"B"+i,data: cellData.data};
         data_in_json.push(one_json);
     }
 

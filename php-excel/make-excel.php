@@ -3,8 +3,7 @@
 //$name = $_POST['name'];
 //$city = $_POST['city'];
 $data = $_POST['data']; // 傳過來的是string
-$json_array=json_decode($data,true);
-
+$json_array = json_decode($data, true);
 
 function getHttpToDownload($stamp) {
     $stamp = time();
