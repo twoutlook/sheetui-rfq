@@ -2,7 +2,8 @@
 
 //$name = $_POST['name'];
 //$city = $_POST['city'];
-$data = $_POST['data'];
+$data = $_POST['data']; // 傳過來的是string
+$json_array=json_decode($data,true);
 
 
 function getHttpToDownload($stamp) {
@@ -68,21 +69,24 @@ $objPHPExcel = new PHPExcel();
 
 // Set document properties
 //echo date('H:i:s') , " Set document properties" , EOL;
-$objPHPExcel->getProperties()->setCreator("Maarten Balliauw")
-        ->setLastModifiedBy("Maarten Balliauw")
-        ->setTitle("PHPExcel Test Document")
-        ->setSubject("PHPExcel Test Document")
-        ->setDescription("Test document for PHPExcel, generated using PHP classes.")
+$objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
+        ->setLastModifiedBy("in-house WebApp RFQ")
+        ->setTitle("RFQ")
+        ->setSubject("RFQ")
+        ->setDescription("RFQ generated using PHP classes.")
         ->setKeywords("office PHPExcel php")
         ->setCategory("Test result file");
 
 
 // Add some data
 //echo date('H:i:s') , " Add some data" , EOL;
-$objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('A1', $data)
-        ->setCellValue('A2', "座標轉換的問題");
-
+//$objPHPExcel->setActiveSheetIndex(0)
+//        ->setCellValue('A1', $json_array[1]['data'])
+//        ->setCellValue('A2', "座標轉換的問題");
+for ($i=0;$i<count($json_array);$i++){
+   $objPHPExcel->setActiveSheetIndex(0)
+        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
+}
 
 
 

@@ -1,21 +1,21 @@
 /**
  * This is function query customer existing data ...
  */
-function AUTO_FILL_CUSTOMER_DATA_BY_EMPLOYEEID(employeeId, sheetId, row, col) {
-
-    // ok this function can call your backend and query data for employeeId and fill to here
-    // In here, we just simulation it ...	
-    var cells = [];
-    cells.push({sheet: sheetId, row: row, col: 2, json: {data: 'John' + row + " Doe"}});
-    cells.push({sheet: sheetId, row: row, col: 3, json: {render: 'dropRender', data: 'HR Dept', dropId: 1}});
-    cells.push({sheet: sheetId, row: row, col: 4, json: {data: 'John' + row + '@yourCompany.com'}});
-    cells.push({sheet: sheetId, row: row, col: 5, json: {data: '1 (888) 123-4567'}});
-    cells.push({sheet: sheetId, row: row, col: 6, json: {data: 'Female'}});
-    cells.push({sheet: sheetId, row: row, col: 7, json: {data: '1990-08-20', fm: "date", dfm: "F d, Y"}});
-    cells.push({sheet: sheetId, row: row, col: 11, json: {data: 102123.34567}});
-    cells.push({sheet: sheetId, row: row, col: 12, json: {data: 0.99995}});
-    SHEET_API.updateCells(SHEET_API_HD, cells);
-}
+//function AUTO_FILL_CUSTOMER_DATA_BY_EMPLOYEEID(employeeId, sheetId, row, col) {
+//
+//    // ok this function can call your backend and query data for employeeId and fill to here
+//    // In here, we just simulation it ...	
+//    var cells = [];
+//    cells.push({sheet: sheetId, row: row, col: 2, json: {data: 'John' + row + " Doe"}});
+//    cells.push({sheet: sheetId, row: row, col: 3, json: {render: 'dropRender', data: 'HR Dept', dropId: 1}});
+//    cells.push({sheet: sheetId, row: row, col: 4, json: {data: 'John' + row + '@yourCompany.com'}});
+//    cells.push({sheet: sheetId, row: row, col: 5, json: {data: '1 (888) 123-4567'}});
+//    cells.push({sheet: sheetId, row: row, col: 6, json: {data: 'Female'}});
+//    cells.push({sheet: sheetId, row: row, col: 7, json: {data: '1990-08-20', fm: "date", dfm: "F d, Y"}});
+//    cells.push({sheet: sheetId, row: row, col: 11, json: {data: 102123.34567}});
+//    cells.push({sheet: sheetId, row: row, col: 12, json: {data: 0.99995}});
+//    SHEET_API.updateCells(SHEET_API_HD, cells);
+//}
 
 
 
@@ -331,40 +331,50 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN003(value, row, column, sheetId, cellObj
 
 function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
-    var download_url = "";
 
-    var data_in_json = [{a: "111", b: "222", c: "333", d: "444"}, {a: "第二行111", b: "222", c: "333", d: "444"}, {a: "第三行111", b: "222", c: "333", d: "444"}];
+    var cellData = "";
+
+    var data_in_json = [{pos: "A1", data: "很有挑戰"}, {pos: "A2", data: "思考"}, {pos: "A3", data: "行動"}];
+
+    var sheet = 1;
+    var row = 0;
+    var col = 0;
+    for (var i = 1; i < 113; i++) {
+//        row=i;
+        col = 3
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, col);
+        var one_json = {pos:"C"+i,data: cellData.data};
+        data_in_json.push(one_json);
+    }
+
+
+
+
+
+
+
 
     $.post("php-excel/make-excel.php",
-//            {
-//                name: "Mark",
-//                city: "昆山"
-//
-//            },
             {data: JSON.stringify(data_in_json)},
             function (data, status) {
                 if (status === "success") {
                     console.log(data);
-                    download_url = data;
                     var cells = [];
                     cells.push({
                         sheet: 1,
                         row: 5,
                         col: 1,
-//                        json: { data: "下載", link:data} 
-//                        json: {data: data}
                         json: {data: "下載", link: "http://" + data}
                     }, {
                         sheet: 1,
                         row: 114,
                         col: 1,
                         json: {data: "下載", link: "http://" + data}
-//                        json: {data: data}
                     });
                     SHEET_API.updateCells(SHEET_API_HD, cells);
 
                 } else {
-                    console.log("CUSTOM_BUTTON_CLICK_CALLBACK_FN002 failed");
+                    console.log("CUSTOM_BUTTON_CLICK____MAKE_EXCEL failed");
                 }
             });
 
