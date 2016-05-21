@@ -8,11 +8,11 @@ $json_array = json_decode($data, true);
 
 //$json_by_user = $_POST['json_by_user']; // 傳過來的是string
 //$json_by_user_obj = json_decode($json_by_user, true);
-$debug003 = fopen("debug003.txt", "w") or die("Unable to open file!");
+$debug003 = fopen("results/debug003.txt", "w") or die("Unable to open file!");
 fwrite($debug003, $data);
 fclose($debug003);
 
-$debug004 = fopen("debug004.txt", "w") or die("Unable to open file!");
+$debug004 = fopen("results/debug004.txt", "w") or die("Unable to open file!");
 
 $obj= $json_array;
 
