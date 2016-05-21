@@ -22,8 +22,12 @@ function getDesiredData($obj) {
     $colName = strtoupper($cdefgh);
     if (strtoupper($cdefgh) >= "C" && strtoupper($cdefgh) >= "H") {
         if ($pos == 23) {
-            return "=SUM(" . $colName . "19:" . $colName . "22)";
+//            return "=SUM(" . $colName . "19:" . $colName . "22)";
+            return "=" . $colName . "19 + " . $colName . "22)";
         }
+        
+        
+        
     }
 
 
