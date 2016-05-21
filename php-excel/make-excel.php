@@ -200,14 +200,16 @@ for ($i = 0; $i < count($json_array); $i++) {
 //    $pos = $json_array[$i]['pos'];
 //    $pos123 = $pos . substr(1);
 
-    $objPHPExcel->setActiveSheetIndex(0)
+//    $objPHPExcel->setActiveSheetIndex(0)
+    $objPHPExcel->getActiveSheet()
+            
             //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
 }
 
 // B欄自動換行
-$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
-        ->setWrapText(true);
+//$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
+//        ->setWrapText(true);
 //
 //$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
 //        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -257,7 +259,7 @@ $objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($condition
 
 // 
 $objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H23'
+        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H22'
 );
 
 
