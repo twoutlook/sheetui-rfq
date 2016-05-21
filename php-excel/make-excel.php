@@ -253,14 +253,14 @@ $conditionalStyles = $objPHPExcel->getActiveSheet()->getStyle('B2')->getConditio
 array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
-$objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($conditionalStyles);
+//$objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($conditionalStyles);
 
 
 
 // 
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H22'
-);
+//$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
+//        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H22'
+//);
 
 
 
