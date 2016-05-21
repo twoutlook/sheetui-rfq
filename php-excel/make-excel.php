@@ -166,7 +166,7 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
         ->setCategory("Test result file");
 
 // NOTE BY MARK, TO HAVE FIXED COLUMN WIDTH
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(8);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(36);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth($data_width);
 $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth($data_width);
@@ -185,10 +185,17 @@ for ($i = 0; $i < count($json_array); $i++) {
    //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
     
+    $objPHPExcel->getActiveSheet()->getStyle($json_array[$i]['pos'])->getAlignment()
+        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+    
 }
 
 // B欄自動換行
-$objPHPExcel->getActiveSheet()->getStyle('B1:B125')->getAlignment()->setWrapText(true);
+$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
+        ->setWrapText(true);
+//
+//$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
+//        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 
 //$objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue('A1', $data)
