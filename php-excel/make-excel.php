@@ -1,10 +1,37 @@
 <?php
 
-//$name = $_POST['name'];
-//$city = $_POST['city'];
 $data = $_POST['data']; // 傳過來的是string
 $json_array = json_decode($data, true);
 
+
+
+
+//$json_by_user = $_POST['json_by_user']; // 傳過來的是string
+//$json_by_user_obj = json_decode($json_by_user, true);
+$debug003 = fopen("debug003.txt", "w") or die("Unable to open file!");
+fwrite($debug003, $data);
+fclose($debug003);
+
+$debug004 = fopen("debug004.txt", "w") or die("Unable to open file!");
+
+$obj= $json_array;
+
+for ($i=0;$i<count($obj);$i++){
+    fwrite($debug004,$i);
+    fwrite($debug004,"," );
+    fwrite($debug004,$obj[$i]["pos"] );
+    fwrite($debug004,"," );
+    fwrite($debug004,$obj[$i]["data"] );
+    
+    
+//    fwrite($debug_file_002,json_encode($obj[$i]["json"]) );
+    
+    fwrite($debug004,"\n");
+    
+}
+
+
+//fclose($debug_file_002);
 
 // dropdown list problem
 // 1. === might cause err
@@ -111,8 +138,10 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth($data_width);
 for ($i = 0; $i < count($json_array); $i++) {
     $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue($json_array[$i]['pos'],fix01( $json_array[$i]['data']));
+    
+   
 }
-
+ $objPHPExcel->getActiveSheet()->getStyle('B1:B125')->getAlignment()->setWrapText(true);
 
 //$objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue('A1', $data)

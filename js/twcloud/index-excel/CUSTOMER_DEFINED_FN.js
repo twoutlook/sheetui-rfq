@@ -330,31 +330,32 @@ function CUSTOM_BUTTON_CLICK_CALLBACK_FN003(value, row, column, sheetId, cellObj
 }
 
 
-function getData(cellData){
+function getData(cellData) {
     if (cellData.cal) {
-    var formula = cellData.arg;
-    var value = cellData.value;
-    var result = cellData.data;
-    var format = cellData.fm;
-    var detailFormat = cellData.dfm;
-    return value;
-} else {
-    var result = cellData.data;
-    var format = cellData.fm;
-    var detailFormat = cellData.dfm;
-    return result;
-}
+        var formula = cellData.arg;
+        var value = cellData.value;
+        var result = cellData.data;
+        var format = cellData.fm;
+        var detailFormat = cellData.dfm;
+        return value;
+    } else {
+        var result = cellData.data;
+        var format = cellData.fm;
+        var detailFormat = cellData.dfm;
+        return result;
+    }
 }
 
 
 function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
-
+var json_by_user = SHEET_API.getJsonData(SHEET_API_HD);
+console.log(Ext.encode(json_by_user));
     var cellData = "";
 
 //    var data_in_json = [{pos: "A1", data: "很有挑戰"}, {pos: "A2", data: "思考"}, {pos: "A3", data: "行動"}];
     var data_in_json = [];
-    
+
 
     var sheet = 1;
     var row = 0;
@@ -375,7 +376,38 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
 
         // col C
         cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 3);
-        var one_json = {pos: "C" + i, data: cellData.data};
+//        var one_json = {pos: "C" + i, data: cellData.data};//getData
+        var data2 = getData(cellData);
+        if (cellData.cal) {
+            //      var one_json = {pos: "C" + i, data:cellData.data };//getData
+            if (cellData.val) {
+
+                var one_json = {pos: "C" + i, data: cellData.value};//getData
+            } else {
+                var one_json = {pos: "C" + i, data: "xxx"};
+            }
+            var one_json = {pos: "C" + i, data: cellData.arg};
+            if (i == 23) {
+                var one_json = {pos: "C" + i, data: "=SUM(C19:C22)"};
+    console.log(cellData);
+            }
+        } else {
+            //    var one_json = {pos: "C" + i, data:cellData.data };//getData
+            var one_json = {pos: "C" + i, data: cellData.value};//getData
+            if (cellData.val) {
+
+                var one_json = {pos: "C" + i, data: cellData.value};//getData
+            } else {
+                var one_json = {pos: "C" + i, data: "yyy"};
+            }
+            var one_json = {pos: "C" + i, data: cellData.data};
+            if (i >= 19 && i <= 22) {
+                console.log(cellData);
+                var one_json = {pos: "C" + i, data: 12345};
+            }
+        }
+
+
         data_in_json.push(one_json);
 
         // col D
@@ -397,7 +429,7 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
 
 
     $.post("php-excel/make-excel.php",
-            {data: JSON.stringify(data_in_json)},
+            {json_by_user:JSON.stringify(json_by_user) ,data: JSON.stringify(data_in_json)},
             function (data, status) {
                 if (status === "success") {
                     console.log(data);
