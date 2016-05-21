@@ -16,16 +16,35 @@ function isRmb($row) {
     return false;
 }
 
+function getDesiredData($obj) {
+    $pos = (int) substr($obj["pos"], 1);
+    $cdefgh = substr($obj["pos"], 0, 1);
+    $colName = strtoupper($cdefgh);
+    if (strtoupper($cdefgh) >= "C" && strtoupper($cdefgh) >= "H") {
+        if ($pos == 23) {
+            return "=SUM(" . $colName . "19:" . $colName . "22)";
+        }
+    }
 
-function getDesiredData($obj){
-    $temp1=$obj["data"];
-    $temp2 = str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>', '', $temp1);
-    $temp3 = str_replace('===', '≡≡≡', $temp2);
-    $temp4 = str_replace('#N/A', '', $temp3);
-    
-    
-    return $temp4;
+
+
+    $temp1 = $obj["data"];
+    //   $temp3=$temp1;
+    //if (substr($temp1, 0, 1) == '¥') {
+    $temp2 = str_replace('¥', '', $temp1);
+    $temp3 = str_replace(',', '', $temp2);
+
+    //}
+
+
+    $temp4 = str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>', '', $temp3);
+    $temp5 = str_replace('===', '≡≡≡', $temp4);
+    $temp6 = str_replace('#N/A', '', $temp5);
+
+
+    return $temp6;
 }
+
 function fix01($row, $str) {
 
 
@@ -182,11 +201,8 @@ for ($i = 0; $i < count($json_array); $i++) {
 //    $pos123 = $pos . substr(1);
 
     $objPHPExcel->setActiveSheetIndex(0)
-   //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
+            //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
-    
-
-    
 }
 
 // B欄自動換行
@@ -195,7 +211,6 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
 //
 //$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
 //        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-
 //$objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue('A1', $data)
 //        ->setCellValue('A2', "座標轉換的問題");
@@ -210,24 +225,24 @@ $objPHPExcel->setActiveSheetIndex(0);
 
 $objConditional1 = new PHPExcel_Style_Conditional();
 $objConditional1->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
-                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_BETWEEN)
-                ->addCondition('200')
-                ->addCondition('400');
+        ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_BETWEEN)
+        ->addCondition('200')
+        ->addCondition('400');
 $objConditional1->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_YELLOW);
 $objConditional1->getStyle()->getFont()->setBold(true);
 $objConditional1->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 $objConditional2 = new PHPExcel_Style_Conditional();
 $objConditional2->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
-                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_LESSTHAN)
-                ->addCondition('0');
+        ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_LESSTHAN)
+        ->addCondition('0');
 $objConditional2->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 $objConditional2->getStyle()->getFont()->setItalic(true);
 $objConditional2->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 $objConditional3 = new PHPExcel_Style_Conditional();
 $objConditional3->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
-                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_GREATERTHANOREQUAL)
-                ->addCondition('0');
-$objConditional3->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_GREEN);
+        ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_GREATERTHANOREQUAL)
+        ->addCondition('0');
+$objConditional3->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLUE);
 $objConditional3->getStyle()->getFont()->setItalic(true);
 //$objConditional3->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 $objConditional3->getStyle()->getNumberFormat()->setFormatCode("¥#,##0.00");
@@ -236,18 +251,14 @@ $conditionalStyles = $objPHPExcel->getActiveSheet()->getStyle('B2')->getConditio
 array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
-$objPHPExcel->getActiveSheet()->getStyle('A3')->setConditionalStyles($conditionalStyles);
+$objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($conditionalStyles);
 
- $objPHPExcel->getActiveSheet()
-   //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
-            ->setCellValue('A3', 123456.78);
 
-//	duplicate the conditional styles across a range of cells
-//echo date('H:i:s') , " Duplicate the conditional formatting across a range of cells" , EOL;
+
+// 
 $objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-				$objPHPExcel->getActiveSheet()->getStyle('A3')->getConditionalStyles(),
-				'A7:A9'
-			  );
+        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H23'
+);
 
 
 
