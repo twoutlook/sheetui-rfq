@@ -283,6 +283,10 @@ array_push($conditionalStyles, $objConditional3);
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+
+//http://stackoverflow.com/questions/11189145/formula-error-in-phpexcel
+$objWriter->setPreCalculateFormulas(false);
+
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 
