@@ -185,8 +185,7 @@ for ($i = 0; $i < count($json_array); $i++) {
    //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
     
-    $objPHPExcel->getActiveSheet()->getStyle($json_array[$i]['pos'])->getAlignment()
-        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+
     
 }
 
@@ -207,6 +206,59 @@ $objPHPExcel->getActiveSheet()->setTitle('RFQ');
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
 $objPHPExcel->setActiveSheetIndex(0);
+
+
+$objConditional1 = new PHPExcel_Style_Conditional();
+$objConditional1->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
+                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_BETWEEN)
+                ->addCondition('200')
+                ->addCondition('400');
+$objConditional1->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_YELLOW);
+$objConditional1->getStyle()->getFont()->setBold(true);
+$objConditional1->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+$objConditional2 = new PHPExcel_Style_Conditional();
+$objConditional2->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
+                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_LESSTHAN)
+                ->addCondition('0');
+$objConditional2->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+$objConditional2->getStyle()->getFont()->setItalic(true);
+$objConditional2->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+$objConditional3 = new PHPExcel_Style_Conditional();
+$objConditional3->setConditionType(PHPExcel_Style_Conditional::CONDITION_CELLIS)
+                ->setOperatorType(PHPExcel_Style_Conditional::OPERATOR_GREATERTHANOREQUAL)
+                ->addCondition('0');
+$objConditional3->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_GREEN);
+$objConditional3->getStyle()->getFont()->setItalic(true);
+//$objConditional3->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
+$objConditional3->getStyle()->getNumberFormat()->setFormatCode("¥#,##0.00");
+
+$conditionalStyles = $objPHPExcel->getActiveSheet()->getStyle('B2')->getConditionalStyles();
+array_push($conditionalStyles, $objConditional1);
+array_push($conditionalStyles, $objConditional2);
+array_push($conditionalStyles, $objConditional3);
+$objPHPExcel->getActiveSheet()->getStyle('A3')->setConditionalStyles($conditionalStyles);
+
+ $objPHPExcel->getActiveSheet()
+   //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
+            ->setCellValue('A3', 123456.78);
+
+//	duplicate the conditional styles across a range of cells
+//echo date('H:i:s') , " Duplicate the conditional formatting across a range of cells" , EOL;
+$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
+				$objPHPExcel->getActiveSheet()->getStyle('A3')->getConditionalStyles(),
+				'A7:A9'
+			  );
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Save Excel 2007 file

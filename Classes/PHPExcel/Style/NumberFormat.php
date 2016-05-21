@@ -65,7 +65,12 @@ class PHPExcel_Style_NumberFormat extends PHPExcel_Style_Supervisor implements P
 
     const FORMAT_CURRENCY_USD_SIMPLE     = '"$"#,##0.00_-';
     const FORMAT_CURRENCY_USD            = '$#,##0_-';
+//    const FORMAT_CURRENCY_RMB            = '¥#,##0_-';
     const FORMAT_CURRENCY_EUR_SIMPLE     = '[$EUR ]#,##0.00_-';
+    
+    //BY MARK
+   // const FORMAT_CURRENCY_EUR_SIMPLE     = '[$EUR ]#,##0.00_-';
+    
 
     /**
      * Excel built-in number formats
