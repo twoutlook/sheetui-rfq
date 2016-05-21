@@ -3,8 +3,47 @@
 $data = $_POST['data']; // 傳過來的是string
 $json_array = json_decode($data, true);
 
+$json_array_string = json_encode($json_array);
+
+$arr_rmb = [19, 20, 21, 22];
+
+function isRmb($row) {
+    for ($i = 0; $i < count($arr_rmb); $i++) {
+        if ($arr_rmb[$i] == $row) {
+            return true;
+        }
+    }
+    return false;
+}
 
 
+function getDesiredData($obj){
+    $temp1=$obj["data"];
+    $temp2 = str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>', '', $temp1);
+    $temp3 = str_replace('===', '≡≡≡', $temp2);
+    $temp4 = str_replace('#N/A', '', $temp3);
+    
+    
+    return $temp4;
+}
+function fix01($row, $str) {
+
+
+
+
+
+    $str2 = str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>', '', $str);
+    $str3 = str_replace('===', '≡≡≡', $str2);
+
+
+//    if (isRmb($row)){
+//         $str3=str_replace('¥','',$str3);
+//         $str3=str_replace(',','',$str3);
+//         
+//    }
+
+    return $str3;
+}
 
 //$json_by_user = $_POST['json_by_user']; // 傳過來的是string
 //$json_by_user_obj = json_decode($json_by_user, true);
@@ -13,37 +52,49 @@ fwrite($debug003, $data);
 fclose($debug003);
 
 $debug004 = fopen("results/debug004.txt", "w") or die("Unable to open file!");
+//$debug005 = fopen("results/debug005.txt",  "rw, ccs=UTF-8") or die("Unable to open file!");
+$debug005 = fopen("results/debug005.txt", "w") or die("Unable to open file!");
 
-$obj= $json_array;
 
-for ($i=0;$i<count($obj);$i++){
-    fwrite($debug004,$i);
-    fwrite($debug004,"," );
-    fwrite($debug004,$obj[$i]["pos"] );
-    fwrite($debug004,"," );
-    fwrite($debug004,$obj[$i]["data"] );
-    
-    
-//    fwrite($debug_file_002,json_encode($obj[$i]["json"]) );
-    
-    fwrite($debug004,"\n");
-    
+$obj = $json_array;
+
+$obj2[] = array('pos' => "A0", 'data' => "xxx");
+
+for ($i = 0; $i < count($obj); $i++) {
+    fwrite($debug004, $i);
+    fwrite($debug004, ",");
+    fwrite($debug004, $obj[$i]["pos"]);
+    fwrite($debug004, ",");
+    $data = $obj[$i]["data"];
+
+    fwrite($debug004, $obj[$i]["data"]);
+    fwrite($debug004, ",");
+    $rowNum = (int) substr($obj[$i]["pos"], 1);
+    fwrite($debug004, $rowNum);
+
+//    if ($rowNum>=19 && $rowNum<=22){//isRmb
+    if (in_array($rowNum, [19, 20, 21, 22])) {
+        $fix_data = str_replace(',', '', $data); //¥
+        $fix_data = str_replace('¥', '', $fix_data); //
+    } else {
+        $fix_data = $data;
+    }
+    $obj2[] = array('pos' => $obj[$i]["pos"], 'data' => $fix_data);
+
+    fwrite($debug004, ",");
+    fwrite($debug004, $fix_data);
+    fwrite($debug004, "\n");
 }
-
+fwrite($debug005, json_encode($obj2));
+fclose($debug005);
 
 //fclose($debug_file_002);
-
 // dropdown list problem
 // 1. === might cause err
 // 2. when selected, need to remove <span style="padding-left:20px;font-size:0px;">&nbsp;</span>
 // A360<span style="padding-left:20px;font-size:0px;">&nbsp;</span>
-function fix01($str){
- 
-    $str2=str_replace('<span style="padding-left:20px;font-size:0px;">&nbsp;</span>','',$str);
-    $str3=str_replace('===','≡≡≡',$str2);
-    
-    return $str3;
-}
+
+
 
 
 function getHttpToDownload($stamp) {
@@ -103,7 +154,7 @@ $defaultOutputFile = pathinfo(__FILE__, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR 
 //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
 $objPHPExcel = new PHPExcel();
 
-$data_width = 36;
+$data_width = 26;
 // Set document properties
 //echo date('H:i:s') , " Set document properties" , EOL;
 $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
@@ -113,6 +164,8 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
         ->setDescription("RFQ generated using PHP classes.")
         ->setKeywords("office PHPExcel php")
         ->setCategory("Test result file");
+
+// NOTE BY MARK, TO HAVE FIXED COLUMN WIDTH
 $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(6);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(36);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth($data_width);
@@ -123,25 +176,19 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth($data_width);
 $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth($data_width);
 
 
-// Add some data
-//echo date('H:i:s') , " Add some data" , EOL;
-//for ($i=0;$i<count($json_array);$i++){
-//for ($i=0;$i<32;$i++){ // FIRST ERR???
-//   $objPHPExcel->setActiveSheetIndex(0)
-//        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']); 
-//}
-
-
-
-
-
 for ($i = 0; $i < count($json_array); $i++) {
+    //    $posAbc=$pos.substr(0, 1);
+//    $pos = $json_array[$i]['pos'];
+//    $pos123 = $pos . substr(1);
+
     $objPHPExcel->setActiveSheetIndex(0)
-            ->setCellValue($json_array[$i]['pos'],fix01( $json_array[$i]['data']));
+   //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
+            ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
     
-   
 }
- $objPHPExcel->getActiveSheet()->getStyle('B1:B125')->getAlignment()->setWrapText(true);
+
+// B欄自動換行
+$objPHPExcel->getActiveSheet()->getStyle('B1:B125')->getAlignment()->setWrapText(true);
 
 //$objPHPExcel->setActiveSheetIndex(0)
 //        ->setCellValue('A1', $data)

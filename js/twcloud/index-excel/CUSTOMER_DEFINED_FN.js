@@ -361,9 +361,7 @@ console.log(Ext.encode(json_by_user));
     var row = 0;
     var col = 0;
     for (var i = 1; i < 113; i++) {
-//        row=i;
-//        col = 3
-        // col A
+
         if (i > 10 && i < 110) {
             cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 1);
             var one_json = {pos: "A" + i, data: cellData.data};
@@ -376,38 +374,7 @@ console.log(Ext.encode(json_by_user));
 
         // col C
         cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 3);
-//        var one_json = {pos: "C" + i, data: cellData.data};//getData
-        var data2 = getData(cellData);
-        if (cellData.cal) {
-            //      var one_json = {pos: "C" + i, data:cellData.data };//getData
-            if (cellData.val) {
-
-                var one_json = {pos: "C" + i, data: cellData.value};//getData
-            } else {
-                var one_json = {pos: "C" + i, data: "xxx"};
-            }
-            var one_json = {pos: "C" + i, data: cellData.arg};
-            if (i == 23) {
-                var one_json = {pos: "C" + i, data: "=SUM(C19:C22)"};
-    console.log(cellData);
-            }
-        } else {
-            //    var one_json = {pos: "C" + i, data:cellData.data };//getData
-            var one_json = {pos: "C" + i, data: cellData.value};//getData
-            if (cellData.val) {
-
-                var one_json = {pos: "C" + i, data: cellData.value};//getData
-            } else {
-                var one_json = {pos: "C" + i, data: "yyy"};
-            }
-            var one_json = {pos: "C" + i, data: cellData.data};
-            if (i >= 19 && i <= 22) {
-                console.log(cellData);
-                var one_json = {pos: "C" + i, data: 12345};
-            }
-        }
-
-
+        var one_json = {pos: "C" + i, data: cellData.data};
         data_in_json.push(one_json);
 
         // col D
