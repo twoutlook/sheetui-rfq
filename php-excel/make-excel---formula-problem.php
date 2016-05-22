@@ -1,7 +1,7 @@
 <?php
 
 $data = $_POST['data']; // 傳過來的是string
-$json_array = json_decode($data, true); // json_decode and json_encode not 100% converted for utf-8, WHY?
+$json_array = json_decode($data, true);
 
 $json_array_string = json_encode($json_array);
 
@@ -25,6 +25,9 @@ function getDesiredData($obj) {
 //            return "=SUM(" . $colName . "19:" . $colName . "22)";
             return "=" . $colName . "19 + " . $colName . "22)";
         }
+        
+        
+        
     }
 
 
@@ -200,20 +203,13 @@ for ($i = 0; $i < count($json_array); $i++) {
     //    $posAbc=$pos.substr(0, 1);
 //    $pos = $json_array[$i]['pos'];
 //    $pos123 = $pos . substr(1);
+
 //    $objPHPExcel->setActiveSheetIndex(0)
     $objPHPExcel->getActiveSheet()
-
+            
             //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
 }
-
-$objPHPExcel->getActiveSheet()->setCellValue('B1', 'Range #1')
-        ->setCellValue('B2', '9000')
-        ->setCellValue('B3', '800')
-        ->setCellValue('B4', '77.123')
-        ->setCellValue('B5', '=SUM(B2:B4)')
-        ->setCellValue('C23', '=SUM(C19:C22)');
-
 
 // B欄自動換行
 //$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
@@ -262,19 +258,35 @@ array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
 //$objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($conditionalStyles);
+
+
+
 // 
 //$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
 //        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H22'
 //);
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Save Excel 2007 file
 //echo date('H:i:s') , " Write to Excel2007 format" , EOL;
 $callStartTime = microtime(true);
 
-$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 
 //http://stackoverflow.com/questions/11189145/formula-error-in-phpexcel
-//$objWriter->setPreCalculateFormulas(false);
+$objWriter->setPreCalculateFormulas(false);
 
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
