@@ -105,7 +105,7 @@ Ext.onReady(function () {
 
 
     var json = {
-        fileName: "FT-001-RFQ",
+        fileName: "RFQ",
         sheets: [{id: 1, name: "RFQ001a", actived: true, color: "orange"},
             {id: 2, name: "LOOKUP", actived: true, color: "blue"},
             {id: 3, name: "LOOKUP2", actived: true, color: "blue"},
@@ -788,7 +788,9 @@ Ext.onReady(function () {
     //SHEET_API.loadData(SHEET_API_HD, json, null, this);
     SHEET_API.loadData(SHEET_API_HD, json, function () {
         SHEET_API.setMaxRowNumber(114);
-        SHEET_API.setMaxColNumber(8);
+//        SHEET_API.setMaxColNumber(8);//col H is NOT working well when copy/paste col
+        SHEET_API.setMaxColNumber(9);
+        
     }, this);
 
     //DOING TESTING SAVE DATA

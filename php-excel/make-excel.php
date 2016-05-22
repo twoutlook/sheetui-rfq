@@ -258,14 +258,20 @@ array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
 
+$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
 
 
-$objPHPExcel->getActiveSheet()->getStyle('C19')->setConditionalStyles($conditionalStyles);
+//$objPHPExcel->getActiveSheet()->getStyle('C19')->setConditionalStyles($conditionalStyles);
+
+//$objPHPExcel->getActiveSheet()->getStyle('C19:H23')->getNumberFormat()->setFormatCode("¥#,##0.00");
+//$objPHPExcel->getActiveSheet()->getStyle('C24:H24')->getNumberFormat()->setFormatCode("$#,##0.00");
+
+
 // 
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-        $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H23'
-);
+//$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
+//        $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H23'
+//);
 
 // Save Excel 2007 file
 //echo date('H:i:s') , " Write to Excel2007 format" , EOL;

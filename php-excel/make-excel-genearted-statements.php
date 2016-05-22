@@ -1,6 +1,5 @@
 <?php
 
-
 $objPHPExcel->getActiveSheet()
 ->setCellValue('C24', '=C23/6.35')
 ->setCellValue('D24', '=D23/6.35')
@@ -41,65 +40,31 @@ $objPHPExcel->getActiveSheet()
 ->setCellValue('G105', '=G38+G48+G52+G59+G64+G69+G73+G77+G83+G91+G95+G99+G104')
 ->setCellValue('H105', '=H38+H48+H52+H59+H64+H69+H73+H77+H83+H91+H95+H99+H104')
 ;
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H19');
 
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C20:H20');
 
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C21:H21');
+// RMB
+$objPHPExcel->getActiveSheet()->getStyle('C19:H19')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C20:H20')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C21:H21')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C22:H22')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C23:H23')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C38:H38')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C48:H48')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C52:H52')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C59:H59')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C64:H64')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C69:H69')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C73:H73')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C77:H77')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C83:H83')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C91:H91')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C95:H95')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C99:H99')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C104:H104')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C105:H105')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C110:H110')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C111:H111')->getNumberFormat()->setFormatCode("¥#,##0.00");
 
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C22:H22');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C23:H23');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C38:H38');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C48:H48');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C52:H52');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C59:H59');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C64:H64');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C69:H69');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C73:H73');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C77:H77');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C83:H83');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C91:H91');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C95:H95');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C99:H99');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C104:H104');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C105:H105');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C110:H110');
-
-$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C111:H111');
+// USD
+$objPHPExcel->getActiveSheet()->getStyle('C24:H24')->getNumberFormat()->setFormatCode("$#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C112:H112')->getNumberFormat()->setFormatCode("$#,##0.00");

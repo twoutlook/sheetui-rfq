@@ -7,9 +7,18 @@ error_reporting(E_ALL);
 
 
 $tool = new MarkTool();
+echo '&lt;?php <br>';
 $tool->makeUsd();
 $tool->makeSum(); //
-$tool->makeRmbStyle(); //makeRmbStyle
+//$tool->makeRmbStyle(); //makeRmbStyle
+echo "<br> // RMB<br> ";
+$moneyArrRMB = '[{"items":[19,20,21,22,23, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
+$tool->makeMoneyStyle("¥", $moneyArrRMB);
+echo "<br> // USD<br> ";
+$moneyArrUSD = '[{"items":[24,112]}]';
+$tool->makeMoneyStyle("$", $moneyArrUSD);
+
+
 
 class MarkTool {
     /*
@@ -59,14 +68,13 @@ class MarkTool {
                 $str.="')<br>";
             }
         }
-        echo $str . ";";
+        echo $str . ";<br><br>";
     }
 
     /*
-      $objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-      $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H23'
-      );
 
+      $objPHPExcel->getActiveSheet()->getStyle('C19:H23')->getNumberFormat()->setFormatCode("¥#,##0.00");
+      $objPHPExcel->getActiveSheet()->getStyle('C24:H24')->getNumberFormat()->setFormatCode("$#,##0.00");
      * * 
      */
 
@@ -81,9 +89,27 @@ class MarkTool {
 
             $items = $obj->items;
             for ($j = 0; $j < count($items); $j++) {
-                $str = " <br> \$objPHPExcel->getActiveSheet()->duplicateConditionalStyle( <br>";
-                $str.= "  \$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C" . $items[$j] . ":H" . $items[$j];
-                $str.="')";
+//                $str = " <br> \$objPHPExcel->getActiveSheet()->duplicateConditionalStyle( <br>";
+//                $str.= "  \$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C" . $items[$j] . ":H" . $items[$j];
+                $str = "\$objPHPExcel->getActiveSheet()->getStyle('C" . $items[$j] . ":H" . $items[$j] . "')->getNumberFormat()->setFormatCode(\"¥#,##0.00\")";
+                echo $str . ";<br>";
+            }
+        }
+    }
+
+    public function makeMoneyStyle($money, $moneyArr) {
+        $objMoney = json_decode($moneyArr);
+//        print_r($objRmb);
+
+
+
+        foreach ($objMoney as $key => $obj) {
+
+            $items = $obj->items;
+            for ($j = 0; $j < count($items); $j++) {
+//                $str = " <br> \$objPHPExcel->getActiveSheet()->duplicateConditionalStyle( <br>";
+//                $str.= "  \$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C" . $items[$j] . ":H" . $items[$j];
+                $str = "\$objPHPExcel->getActiveSheet()->getStyle('C" . $items[$j] . ":H" . $items[$j] . "')->getNumberFormat()->setFormatCode(\"" . $money . "#,##0.00\")";
                 echo $str . ";<br>";
             }
         }
