@@ -272,44 +272,9 @@ $objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
 $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-//$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-
-//http://stackoverflow.com/questions/11189145/formula-error-in-phpexcel
-//$objWriter->setPreCalculateFormulas(false);
 
 
-
-// Going to Use mark-tool.php to make following statements
-$objPHPExcel->getActiveSheet()
-        ->setCellValue('C23', '=SUM(C19:C22)')
-        ->setCellValue('D23', '=SUM(D19:D22)')
-        ->setCellValue('E23', '=SUM(E19:E22)')
-        ;
-
-$objPHPExcel->getActiveSheet()
-->setCellValue('C24', '=C23/6.35')
-->setCellValue('D24', '=D23/6.35')
-->setCellValue('E24', '=E23/6.35')
-->setCellValue('F24', '=F23/6.35')
-->setCellValue('G24', '=G23/6.35')
-->setCellValue('H24', '=H23/6.35')
-->setCellValue('C112', '=C111/6.35')
-->setCellValue('D112', '=D111/6.35')
-->setCellValue('E112', '=E111/6.35')
-->setCellValue('F112', '=F111/6.35')
-->setCellValue('G112', '=G111/6.35')
-->setCellValue('H112', '=H111/6.35')
-;
-
-
-$objPHPExcel->getActiveSheet()
-->setCellValue('C23', '=C19+C20+C21+C22')
-->setCellValue('D23', '=D19+D20+D21+D22')
-->setCellValue('E23', '=E19+E20+E21+E22')
-->setCellValue('F23', '=F19+F20+F21+F22')
-->setCellValue('G23', '=G19+G20+G21+G22')
-->setCellValue('H23', '=H19+H20+H21+H22')
-;
+include 'make-excel-genearted-statements.php';
 
 
 $objWriter->save($defaultOutputFile);
