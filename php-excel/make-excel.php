@@ -211,8 +211,8 @@ for ($i = 0; $i < count($json_array); $i++) {
 
 
 // B欄自動換行
-//$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
-//        ->setWrapText(true);
+$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
+        ->setWrapText(true);
 //
 //$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
 //        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -251,16 +251,22 @@ $objConditional3->getStyle()->getFont()->getColor()->setARGB(PHPExcel_Style_Colo
 $objConditional3->getStyle()->getFont()->setItalic(true);
 //$objConditional3->getStyle()->getNumberFormat()->setFormatCode(PHPExcel_Style_NumberFormat::FORMAT_CURRENCY_EUR_SIMPLE);
 $objConditional3->getStyle()->getNumberFormat()->setFormatCode("¥#,##0.00");
+//$objConditional3->getStyle()->getNumberFormat()->setFormatCode("¥#,##0.00");
 
-$conditionalStyles = $objPHPExcel->getActiveSheet()->getStyle('B2')->getConditionalStyles();
+$conditionalStyles = $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles();
 array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
-//$objPHPExcel->getActiveSheet()->getStyle('B19')->setConditionalStyles($conditionalStyles);
+
+
+
+
+$objPHPExcel->getActiveSheet()->getStyle('C19')->setConditionalStyles($conditionalStyles);
 // 
-//$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
-//        $objPHPExcel->getActiveSheet()->getStyle('B19')->getConditionalStyles(), 'B19:H22'
-//);
+$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
+        $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H23'
+);
+
 // Save Excel 2007 file
 //echo date('H:i:s') , " Write to Excel2007 format" , EOL;
 $callStartTime = microtime(true);
@@ -280,7 +286,30 @@ $objPHPExcel->getActiveSheet()
         ->setCellValue('E23', '=SUM(E19:E22)')
         ;
 
+$objPHPExcel->getActiveSheet()
+->setCellValue('C24', '=C23/6.35')
+->setCellValue('D24', '=D23/6.35')
+->setCellValue('E24', '=E23/6.35')
+->setCellValue('F24', '=F23/6.35')
+->setCellValue('G24', '=G23/6.35')
+->setCellValue('H24', '=H23/6.35')
+->setCellValue('C112', '=C111/6.35')
+->setCellValue('D112', '=D111/6.35')
+->setCellValue('E112', '=E111/6.35')
+->setCellValue('F112', '=F111/6.35')
+->setCellValue('G112', '=G111/6.35')
+->setCellValue('H112', '=H111/6.35')
+;
 
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C23', '=C19+C20+C21+C22')
+->setCellValue('D23', '=D19+D20+D21+D22')
+->setCellValue('E23', '=E19+E20+E21+E22')
+->setCellValue('F23', '=F19+F20+F21+F22')
+->setCellValue('G23', '=G19+G20+G21+G22')
+->setCellValue('H23', '=H19+H20+H21+H22')
+;
 
 
 $objWriter->save($defaultOutputFile);
