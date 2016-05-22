@@ -207,12 +207,7 @@ for ($i = 0; $i < count($json_array); $i++) {
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
 }
 
-$objPHPExcel->getActiveSheet()->setCellValue('B1', 'Range #1')
-        ->setCellValue('B2', '9000')
-        ->setCellValue('B3', '800')
-        ->setCellValue('B4', '77.123')
-        ->setCellValue('B5', '=SUM(B2:B4)')
-        ->setCellValue('C23', '=SUM(C19:C22)');
+
 
 
 // B欄自動換行
@@ -275,6 +270,18 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 
 //http://stackoverflow.com/questions/11189145/formula-error-in-phpexcel
 //$objWriter->setPreCalculateFormulas(false);
+
+
+
+// Going to Use mark-tool.php to make following statements
+$objPHPExcel->getActiveSheet()
+        ->setCellValue('C23', '=SUM(C19:C22)')
+        ->setCellValue('D23', '=SUM(D19:D22)')
+        ->setCellValue('E23', '=SUM(E19:E22)')
+        ;
+
+
+
 
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
