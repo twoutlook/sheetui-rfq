@@ -48,6 +48,7 @@ $objPHPExcel->getActiveSheet()->getStyle('C20:H20')->getNumberFormat()->setForma
 $objPHPExcel->getActiveSheet()->getStyle('C21:H21')->getNumberFormat()->setFormatCode("¥#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C22:H22')->getNumberFormat()->setFormatCode("¥#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C23:H23')->getNumberFormat()->setFormatCode("¥#,##0.00");
+$objPHPExcel->getActiveSheet()->getStyle('C32:H32')->getNumberFormat()->setFormatCode("¥#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C38:H38')->getNumberFormat()->setFormatCode("¥#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C48:H48')->getNumberFormat()->setFormatCode("¥#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C52:H52')->getNumberFormat()->setFormatCode("¥#,##0.00");
@@ -68,3 +69,12 @@ $objPHPExcel->getActiveSheet()->getStyle('C111:H111')->getNumberFormat()->setFor
 // USD
 $objPHPExcel->getActiveSheet()->getStyle('C24:H24')->getNumberFormat()->setFormatCode("$#,##0.00");
 $objPHPExcel->getActiveSheet()->getStyle('C112:H112')->getNumberFormat()->setFormatCode("$#,##0.00");
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C32', '=C30*C31/1000')
+->setCellValue('D32', '=D30*D31/1000')
+->setCellValue('E32', '=E30*E31/1000')
+->setCellValue('F32', '=F30*F31/1000')
+->setCellValue('G32', '=G30*G31/1000')
+->setCellValue('H32', '=H30*H31/1000')
+;

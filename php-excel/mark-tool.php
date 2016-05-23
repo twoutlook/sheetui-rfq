@@ -12,13 +12,12 @@ $tool->makeUsd();
 $tool->makeSum(); //
 //$tool->makeRmbStyle(); //makeRmbStyle
 echo "<br> // RMB<br> ";
-$moneyArrRMB = '[{"items":[19,20,21,22,23, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
+$moneyArrRMB = '[{"items":[19,20,21,22,23, 32,38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
 $tool->makeMoneyStyle("¥", $moneyArrRMB);
 echo "<br> // USD<br> ";
 $moneyArrUSD = '[{"items":[24,112]}]';
 $tool->makeMoneyStyle("$", $moneyArrUSD);
-
-
+$tool->makeCell32(32);
 
 class MarkTool {
     /*
@@ -28,6 +27,19 @@ class MarkTool {
       ->setCellValue('E23', '=SUM(E19:E22)')
       ;
      */
+
+    public function makeCell32($row) {
+        $colNameArr = Array("C", "D", "E", "F", "G", "H");
+        $str = " <br> \$objPHPExcel->getActiveSheet() <br>";
+        for ($i = 0; $i < 6; $i++) {
+            $colName = $colNameArr[$i];
+            //=C30*C31/1000
+            $colRow = $colName . $row;
+            $cell = "=" . $colName . "30*" . $colName . "31/1000";
+            $str.="  ->setCellValue('$colRow', '$cell') <br>";
+        }
+        echo $str . ";";
+    }
 
     public function makeUsd() {
         $strUsd = '[{"usd":24, "rmb":23},{"usd":112, "rmb":111}]';
@@ -79,7 +91,7 @@ class MarkTool {
      */
 
     public function makeRmbStyle() {
-        $strRmb = '[{"items":[19,20,21,22,23, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
+        $strRmb = '[{"items":[19,20,21,22,23,32, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
         $objRmb = json_decode($strRmb);
 //        print_r($objRmb);
 
@@ -114,8 +126,7 @@ class MarkTool {
             }
         }
     }
-    
+
     // cell format
     // http://www.cnblogs.com/freespider/p/3284828.html
-
 }
