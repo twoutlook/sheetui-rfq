@@ -174,7 +174,7 @@ $defaultOutputFile = pathinfo(__FILE__, PATHINFO_DIRNAME) . DIRECTORY_SEPARATOR 
 //echo date('H:i:s') , " Create new PHPExcel object" , EOL;
 $objPHPExcel = new PHPExcel();
 
-$data_width = 26;
+$data_width = 22;
 // Set document properties
 //echo date('H:i:s') , " Set document properties" , EOL;
 $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
@@ -187,7 +187,7 @@ $objPHPExcel->getProperties()->setCreator("in-house WebApp RFQ")
 
 // NOTE BY MARK, TO HAVE FIXED COLUMN WIDTH
 $objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth(8);
-$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(36);
+$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setWidth(32);
 $objPHPExcel->getActiveSheet()->getColumnDimension('C')->setWidth($data_width);
 $objPHPExcel->getActiveSheet()->getColumnDimension('D')->setWidth($data_width);
 $objPHPExcel->getActiveSheet()->getColumnDimension('E')->setWidth($data_width);
@@ -279,9 +279,22 @@ $callStartTime = microtime(true);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 
-
+//
+// --- 以下檔案內容由 mark-tool.php 生成，現階段先以手工複制粘貼方式
+//
 include 'make-excel-genearted-statements.php';
 
+
+/*
+    var colorStep = "#A9BCF5";
+    var colorStepEnd = "#E6E6E6";
+    var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
+    var colorDdl = "#F9E79F"; //#82E0AA  
+    var colorInput = "#F4D03F"; // 
+    //
+*/
+$objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+->getStartColor()->setARGB('FFA9BCF5');
 
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
