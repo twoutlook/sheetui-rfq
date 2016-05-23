@@ -1,10 +1,29 @@
 <?php
 
 $data = $_POST['data']; // 傳過來的是string
+$isDataInCol = $_POST['isDataInCol'];
 $json_array = json_decode($data, true); // json_decode and json_encode not 100% converted for utf-8, WHY?
 
-//$json_array_string = json_encode($json_array);
+/*
+  $isDataInCol
+  ABC.....  只有第一個產品
+  ABCD.... 有2個產品
 
+
+
+
+ */
+
+// FOR DEBUG
+/*
+  $myfile1 = fopen("make-excel-debug.txt", "w") or die("Unable to open file!");
+  fwrite($myfile1, $isDataInCol);
+  fwrite($myfile1, "is it working?");
+  fclose($myfile1);
+ */
+
+
+//$json_array_string = json_encode($json_array);
 //$arr_rmb = [19, 20, 21, 22];
 //
 //function isRmb($row) {
@@ -282,6 +301,34 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 // --- 以下檔案內容由 mark-tool.php 生成，現階段先以手工複制粘貼方式
 //
 include 'make-excel-genearted-statements.php';
+
+// ABCD
+if (substr($isDataInCol, 3, 1) == '.') {
+    for ($i=1;$i<=125;$i++){
+        $objPHPExcel->getActiveSheet()->setCellValue("D$i", '');
+    }
+}
+if (substr($isDataInCol, 4, 1) == '.') {
+    for ($i=1;$i<=125;$i++){
+        $objPHPExcel->getActiveSheet()->setCellValue("E$i", '');
+    }
+}
+if (substr($isDataInCol, 5, 1) == '.') {
+    for ($i=1;$i<=125;$i++){
+        $objPHPExcel->getActiveSheet()->setCellValue("F$i", '');
+    }
+}
+if (substr($isDataInCol, 6, 1) == '.') {
+    for ($i=1;$i<=125;$i++){
+        $objPHPExcel->getActiveSheet()->setCellValue("G$i", '');
+    }
+}
+if (substr($isDataInCol, 7, 1) == '.') {
+    for ($i=1;$i<=125;$i++){
+        $objPHPExcel->getActiveSheet()->setCellValue("H$i", '');
+    }
+}
+
 
 
 /*

@@ -343,10 +343,57 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
     var col = 0;
 
     var isDataInColD = false;
+    var isDataInColE = false;
+    var isDataInColF = false;
+    var isDataInColG = false;
+    var isDataInColH = false;
+
+
+    var isDataInCol = "ABC";
+
     cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 4);
     if (cellData.data.length > 0) {
         isDataInColD = true;
+        isDataInCol += "D";
+    } else {
+        isDataInCol += ".";
     }
+    cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 5);
+    if (cellData.data.length > 0) {
+        isDataInColE = true;
+        isDataInCol += "E";
+    } else {
+        isDataInCol += ".";
+    }
+    cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 6);
+    if (cellData.data.length > 0) {
+        isDataInColF = true;
+        isDataInCol += "F";
+    } else {
+        isDataInCol += ".";
+    }
+    cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 7);
+    if (cellData.data.length > 0) {
+        isDataInColG = true;
+        isDataInCol += "G";
+    } else {
+        isDataInCol += ".";
+    }
+    cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 8);
+    if (cellData.data.length > 0) {
+        isDataInColH = true;
+        isDataInCol += "H";
+    } else {
+        isDataInCol += ".";
+    }
+
+
+
+
+
+
+
+
 
 
     for (var i = 1; i < 113; i++) {
@@ -367,31 +414,35 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
         data_in_json.push(one_json);
 
         // col D
-//        if (isDataInColD) {
-//            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
-//            var one_json = {pos: "D" + i, data: cellData.data};
-//            data_in_json.push(one_json);
-//        }
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
-        var one_json = {pos: "D" + i, data: cellData.data};
-        data_in_json.push(one_json);
+        if (isDataInColD) {
+            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
+            var one_json = {pos: "D" + i, data: cellData.data};
+            data_in_json.push(one_json);
+        }
+//        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
+//        var one_json = {pos: "D" + i, data: cellData.data};
+//        data_in_json.push(one_json);
+        if (isDataInColE) {
+            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 5);
+            var one_json = {pos: "E" + i, data: cellData.data};
+            data_in_json.push(one_json);
+        }
+        if (isDataInColF) {
+            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 6);
+            var one_json = {pos: "F" + i, data: cellData.data};
+            data_in_json.push(one_json);
+        }
+        if (isDataInColG) {
+            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 7);
+            var one_json = {pos: "G" + i, data: cellData.data};
+            data_in_json.push(one_json);
+        }
 
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 5);
-        var one_json = {pos: "E" + i, data: cellData.data};
-        data_in_json.push(one_json);
-
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 6);
-        var one_json = {pos: "F" + i, data: cellData.data};
-        data_in_json.push(one_json);
-
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 7);
-        var one_json = {pos: "G" + i, data: cellData.data};
-        data_in_json.push(one_json);
-
-        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 8);
-        var one_json = {pos: "H" + i, data: cellData.data};
-        data_in_json.push(one_json);
-
+        if (isDataInColH) {
+            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 8);
+            var one_json = {pos: "H" + i, data: cellData.data};
+            data_in_json.push(one_json);
+        }
 
 
 
@@ -405,7 +456,7 @@ function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, 
 
 
     $.post("php-excel/make-excel.php",
-            {json_by_user: JSON.stringify(json_by_user), data: JSON.stringify(data_in_json)},
+            {json_by_user: JSON.stringify(json_by_user), isDataInCol: isDataInCol, data: JSON.stringify(data_in_json)},
             function (data, status) {
                 if (status === "success") {
                     console.log(data);
