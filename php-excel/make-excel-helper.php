@@ -3,7 +3,7 @@
 /** Error reporting */
 error_reporting(E_ALL);
 
-
+//$test = Array(19, 20, 21, 22, 23, 30, 32, 35, 36, 37, 38, 41, 44, 45, 46, 48, 51, 52, 55, 56, 59, 62, 63, 64, 67, 69, 72, 73, 76, 77, 81, 83, 87, 88, 91, 94, 95, 98, 99, 102, 103, 104, 105, 107, 108, 109, 110, 111);
 
 
 $tool = new MarkTool();
@@ -12,12 +12,23 @@ $tool->makeUsd();
 $tool->makeSum(); //
 //$tool->makeRmbStyle(); //makeRmbStyle
 echo "<br> // RMB<br> ";
-$moneyArrRMB = '[{"items":[19,20,21,22,23, 32,38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111]}]';
+$moneyArrRMB = '[{"items":[19, 20, 21, 22, 23, 30, 32, 35, 36, 37, 38, 41, 44, 45, 46, 48, 51, 52, 55, 56, 59, 62, 63, 64, 67, 69, 72, 73, 76, 77, 81, 83, 87, 88, 91, 94, 95, 98, 99, 102, 103, 104, 105, 107, 108, 109, 110, 111]}]';
 $tool->makeMoneyStyle("¥", $moneyArrRMB);
 echo "<br> // USD<br> ";
 $moneyArrUSD = '[{"items":[24,112]}]';
 $tool->makeMoneyStyle("$", $moneyArrUSD);
 $tool->makeCell32(32);
+
+
+//    var colorStep = "#A9BCF5";
+//    var colorStepEnd = "#E6E6E6";
+//    var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
+//    var colorDdl = "#F9E79F"; //#82E0AA  
+//    var colorInput = "#F4D03F"; // 
+//    var arrStepEnd = [23, 24, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111, 112];
+$colorJsonStr = '{"A9BCF5":[15,28,39],"E6E6E6":[23,38,48]}';
+
+$tool->makeColorFillStyle("B", $colorJsonStr);
 
 class MarkTool {
     /*
@@ -129,4 +140,24 @@ class MarkTool {
 
     // cell format
     // http://www.cnblogs.com/freespider/p/3284828.html
+    // for column B only
+    public function makeColorFillStyle($col, $str) {
+        $json = json_decode($str);
+        print_r($json);
+
+        //$objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
+//        ->getStartColor()->setARGB('FFA9BCF5');
+
+        foreach ($json as $key => $val) {
+//            echo $key;
+//            print_r($val);
+            foreach ($val as $item) {
+//                 echo $item;
+                $str = "\$objPHPExcel->getActiveSheet()->getStyle('B$item')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)";
+                $str.=" ->getStartColor()->setARGB('$key');<br>";
+                echo $str;
+            }
+        }
+    }
+
 }
