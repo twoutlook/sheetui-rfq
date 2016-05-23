@@ -341,7 +341,7 @@ if (substr($isDataInCol, 7, 1) == '.') {
  */
 $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
         ->getStartColor()->setARGB('FFA9BCF5');
-echo "debug ...$defaultOutputFile";
+//echo "debug ...$defaultOutputFile";
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 
