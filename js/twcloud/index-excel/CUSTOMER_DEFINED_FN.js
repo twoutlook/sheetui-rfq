@@ -349,8 +349,8 @@ function getData(cellData) {
 
 function CUSTOM_BUTTON_CLICK___MAKE_EXCEL(value, row, column, sheetId, cellObj, store) {
     //NOTE: 5/19 11:54 end user asking to export as real Excel with functions on cells
-var json_by_user = SHEET_API.getJsonData(SHEET_API_HD);
-console.log(Ext.encode(json_by_user));
+    var json_by_user = SHEET_API.getJsonData(SHEET_API_HD);
+    console.log(Ext.encode(json_by_user));
     var cellData = "";
 
 //    var data_in_json = [{pos: "A1", data: "很有挑戰"}, {pos: "A2", data: "思考"}, {pos: "A3", data: "行動"}];
@@ -360,6 +360,14 @@ console.log(Ext.encode(json_by_user));
     var sheet = 1;
     var row = 0;
     var col = 0;
+
+    var isDataInColD = false;
+    cellData = SHEET_API.getCell(SHEET_API_HD, sheet, 7, 4);
+    if (cellData.data.length > 0) {
+        isDataInColD = true;
+    }
+
+
     for (var i = 1; i < 113; i++) {
 
         if (i > 10 && i < 110) {
@@ -378,11 +386,31 @@ console.log(Ext.encode(json_by_user));
         data_in_json.push(one_json);
 
         // col D
+//        if (isDataInColD) {
+//            cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
+//            var one_json = {pos: "D" + i, data: cellData.data};
+//            data_in_json.push(one_json);
+//        }
         cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 4);
         var one_json = {pos: "D" + i, data: cellData.data};
         data_in_json.push(one_json);
 
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 5);
+        var one_json = {pos: "E" + i, data: cellData.data};
+        data_in_json.push(one_json);
 
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 6);
+        var one_json = {pos: "F" + i, data: cellData.data};
+        data_in_json.push(one_json);
+
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 7);
+        var one_json = {pos: "G" + i, data: cellData.data};
+        data_in_json.push(one_json);
+        
+        cellData = SHEET_API.getCell(SHEET_API_HD, sheet, i, 8);
+        var one_json = {pos: "H" + i, data: cellData.data};
+        data_in_json.push(one_json);
+        
 
 
 
@@ -396,7 +424,7 @@ console.log(Ext.encode(json_by_user));
 
 
     $.post("php-excel/make-excel.php",
-            {json_by_user:JSON.stringify(json_by_user) ,data: JSON.stringify(data_in_json)},
+            {json_by_user: JSON.stringify(json_by_user), data: JSON.stringify(data_in_json)},
             function (data, status) {
                 if (status === "success") {
                     console.log(data);

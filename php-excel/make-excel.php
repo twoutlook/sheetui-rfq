@@ -3,18 +3,18 @@
 $data = $_POST['data']; // 傳過來的是string
 $json_array = json_decode($data, true); // json_decode and json_encode not 100% converted for utf-8, WHY?
 
-$json_array_string = json_encode($json_array);
+//$json_array_string = json_encode($json_array);
 
-$arr_rmb = [19, 20, 21, 22];
-
-function isRmb($row) {
-    for ($i = 0; $i < count($arr_rmb); $i++) {
-        if ($arr_rmb[$i] == $row) {
-            return true;
-        }
-    }
-    return false;
-}
+//$arr_rmb = [19, 20, 21, 22];
+//
+//function isRmb($row) {
+//    for ($i = 0; $i < count($arr_rmb); $i++) {
+//        if ($arr_rmb[$i] == $row) {
+//            return true;
+//        }
+//    }
+//    return false;
+//}
 
 function getDesiredData($obj) {
     $pos = (int) substr($obj["pos"], 1);
@@ -210,8 +210,13 @@ for ($i = 0; $i < count($json_array); $i++) {
 
 
 
+
+
+
 // B欄自動換行
 $objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
+        ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
+        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER)
         ->setWrapText(true);
 //
 //$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
@@ -258,21 +263,15 @@ array_push($conditionalStyles, $objConditional1);
 array_push($conditionalStyles, $objConditional2);
 array_push($conditionalStyles, $objConditional3);
 
-$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-
 
 
 //$objPHPExcel->getActiveSheet()->getStyle('C19')->setConditionalStyles($conditionalStyles);
-
 //$objPHPExcel->getActiveSheet()->getStyle('C19:H23')->getNumberFormat()->setFormatCode("¥#,##0.00");
 //$objPHPExcel->getActiveSheet()->getStyle('C24:H24')->getNumberFormat()->setFormatCode("$#,##0.00");
-
-
 // 
 //$objPHPExcel->getActiveSheet()->duplicateConditionalStyle(
 //        $objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C19:H23'
 //);
-
 // Save Excel 2007 file
 //echo date('H:i:s') , " Write to Excel2007 format" , EOL;
 $callStartTime = microtime(true);
@@ -286,15 +285,15 @@ include 'make-excel-genearted-statements.php';
 
 
 /*
-    var colorStep = "#A9BCF5";
-    var colorStepEnd = "#E6E6E6";
-    var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
-    var colorDdl = "#F9E79F"; //#82E0AA  
-    var colorInput = "#F4D03F"; // 
-    //
-*/
+  var colorStep = "#A9BCF5";
+  var colorStepEnd = "#E6E6E6";
+  var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
+  var colorDdl = "#F9E79F"; //#82E0AA
+  var colorInput = "#F4D03F"; //
+  //
+ */
 $objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
-->getStartColor()->setARGB('FFA9BCF5');
+        ->getStartColor()->setARGB('FFA9BCF5');
 
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
