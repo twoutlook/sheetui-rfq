@@ -1131,6 +1131,60 @@ Ext.onReady(function () {
 {sheet: 1, row: 85, col: 8, json: {dsd: 'ed', ta: 'center', cal: true, data: '=H12'}},
 
 
+
+// --- extend67() ---
+{sheet: 1, row: 67, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(D65,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 67, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(E65,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 67, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(F65,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 67, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(G65,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 67, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(H65,LOOKUP04!$A$2:$B$17,2,0)"}},
+
+
+// --- extend69() ---
+{sheet: 1, row: 69, col: 3, json: styleSubTotal({data: setNaToZero("(C66/3600)*C67 * (1 + (1 - C68 / 100))")})},
+{sheet: 1, row: 69, col: 4, json: styleSubTotal({data: setNaToZero("(D66/3600)*D67 * (1 + (1 - D68 / 100))")})},
+{sheet: 1, row: 69, col: 5, json: styleSubTotal({data: setNaToZero("(E66/3600)*E67 * (1 + (1 - E68 / 100))")})},
+{sheet: 1, row: 69, col: 6, json: styleSubTotal({data: setNaToZero("(F66/3600)*F67 * (1 + (1 - F68 / 100))")})},
+{sheet: 1, row: 69, col: 7, json: styleSubTotal({data: setNaToZero("(G66/3600)*G67 * (1 + (1 - G68 / 100))")})},
+{sheet: 1, row: 69, col: 8, json: styleSubTotal({data: setNaToZero("(H66/3600)*H67 * (1 + (1 - H68 / 100))")})},
+
+
+
+// --- extend72() ---
+{sheet: 1, row: 72, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 72, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(D70,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 72, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(E70,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 72, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(F70,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 72, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(G70,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 72, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(H70,LOOKUP04!$A$2:$B$17,2,0)"}}, 
+
+
+// --- extend73X(73, {sheet: 1, row: 73, col: 3, json: styleSubTotal({data: setNaToZero("(C71/3600)*C72")})},) ---
+{sheet: 1, row: 73, col: 3, json: styleSubTotal({data: setNaToZero("(C71/3600)*C72")})},
+{sheet: 1, row: 73, col: 4, json: styleSubTotal({data: setNaToZero("(D71/3600)*D72")})},
+{sheet: 1, row: 73, col: 5, json: styleSubTotal({data: setNaToZero("(E71/3600)*E72")})},
+{sheet: 1, row: 73, col: 6, json: styleSubTotal({data: setNaToZero("(F71/3600)*F72")})},
+{sheet: 1, row: 73, col: 7, json: styleSubTotal({data: setNaToZero("(G71/3600)*G72")})},
+{sheet: 1, row: 73, col: 8, json: styleSubTotal({data: setNaToZero("(H71/3600)*H72")})},
+
+
+// --- extend73X(76, {sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)"}}, ) ---
+{sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 76, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(D74,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 76, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(E74,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 76, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(F74,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 76, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(G74,LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 76, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(H74,LOOKUP04!$A$2:$B$17,2,0)"}},
+
+
+// --- extend73X(77, {sheet: 1, row: 77, col: 3, json: styleSubTotal({data: "=IF(ISNA(C76),0,(C75/3600)*C76)"})}, ) ---
+{sheet: 1, row: 77, col: 3, json: styleSubTotal({data: "=IF(ISNA(C76),0,(C75/3600)*C76)"})},
+{sheet: 1, row: 77, col: 4, json: styleSubTotal({data: "=IF(ISNA(D76),0,(D75/3600)*D76)"})},
+{sheet: 1, row: 77, col: 5, json: styleSubTotal({data: "=IF(ISNA(E76),0,(E75/3600)*E76)"})},
+{sheet: 1, row: 77, col: 6, json: styleSubTotal({data: "=IF(ISNA(F76),0,(F75/3600)*F76)"})},
+{sheet: 1, row: 77, col: 7, json: styleSubTotal({data: "=IF(ISNA(G76),0,(G75/3600)*G76)"})},
+{sheet: 1, row: 77, col: 8, json: styleSubTotal({data: "=IF(ISNA(H76),0,(H75/3600)*H76)"})}, 
+
 // ------------ mark-tool-mainjs.php auto generate (end)  ---------------
 //
 //        
