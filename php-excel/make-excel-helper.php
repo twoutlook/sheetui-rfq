@@ -42,7 +42,45 @@ $tool->extendCell34X(59, "=C56*(1+(1-C57))");
 // 63,64 SAME =(C61/3600)*C62'
 $tool->extendCell34X(63, "=(C61/3600)*C62");
 $tool->extendCell34X(64, "=(C61/3600)*C62");
+//
+//$tool->extendCell34X(69, "=(C66/3600)*C67 * (1 + (1 - C68 / 100))");
+$tool->extendCell34X(69, "=IF(ISNA((C66/3600)*C67 * (1 + (1 - C68))),0,(C66/3600)*C67 * (1 + (1 - C68)))");
 
+//73
+//(C71/3600)*C72
+$tool->extendCell34X(73, "=IF(ISNA((C71/3600)*C72),0,(C71/3600)*C72)");
+
+//77
+//"=IF(ISNA(C76),0,(C75/3600)*C76)
+$tool->extendCell34X(77, "=IF(ISNA(C76),0,(C75/3600)*C76)");
+
+//83
+//
+$tool->extendCell34X(83, "=C80*C81*C82");
+//91
+//"=C86*(C87+C88)*(1+(1-C89/100))*C90
+//$tool->extendCell34X(91, "=C86*(C87+C88)*(1+(1-C89/100))*C90");
+$tool->extendCell34X(91, "=C86*(C87+C88)*(1+(1-C89))*C90");
+
+//95
+//
+$tool->extendCell34X(95, "=C94");
+
+//99
+//
+$tool->extendCell34X(99, "=C98");
+
+//104
+//
+$tool->extendCell34X(104, "=C102+C103");
+
+//107
+//
+$tool->extendCell34X(107, "=C105*C106/100");
+
+//110
+//
+$tool->extendCell34X(110, "=C108+C109");
 
 
 

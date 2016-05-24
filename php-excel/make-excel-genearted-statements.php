@@ -257,6 +257,126 @@ $objPHPExcel->getActiveSheet()
 ;
 
 
+// --- extendCell34X(69,=IF(ISNA((C66/3600)*C67 * (1 + (1 - C68))),0,(C66/3600)*C67 * (1 + (1 - C68)))) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C69', '=IF(ISNA((C66/3600)*C67 * (1 + (1 - C68))),0,(C66/3600)*C67 * (1 + (1 - C68)))')
+->setCellValue('D69', '=IF(ISNA((D66/3600)*D67 * (1 + (1 - D68))),0,(D66/3600)*D67 * (1 + (1 - D68)))')
+->setCellValue('E69', '=IF(ISNA((E66/3600)*E67 * (1 + (1 - E68))),0,(E66/3600)*E67 * (1 + (1 - E68)))')
+->setCellValue('F69', '=IF(ISNA((F66/3600)*F67 * (1 + (1 - F68))),0,(F66/3600)*F67 * (1 + (1 - F68)))')
+->setCellValue('G69', '=IF(ISNA((G66/3600)*G67 * (1 + (1 - G68))),0,(G66/3600)*G67 * (1 + (1 - G68)))')
+->setCellValue('H69', '=IF(ISNA((H66/3600)*H67 * (1 + (1 - H68))),0,(H66/3600)*H67 * (1 + (1 - H68)))')
+;
+
+
+// --- extendCell34X(73,=IF(ISNA((C71/3600)*C72),0,(C71/3600)*C72)) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C73', '=IF(ISNA((C71/3600)*C72),0,(C71/3600)*C72)')
+->setCellValue('D73', '=IF(ISNA((D71/3600)*D72),0,(D71/3600)*D72)')
+->setCellValue('E73', '=IF(ISNA((E71/3600)*E72),0,(E71/3600)*E72)')
+->setCellValue('F73', '=IF(ISNA((F71/3600)*F72),0,(F71/3600)*F72)')
+->setCellValue('G73', '=IF(ISNA((G71/3600)*G72),0,(G71/3600)*G72)')
+->setCellValue('H73', '=IF(ISNA((H71/3600)*H72),0,(H71/3600)*H72)')
+;
+
+
+// --- extendCell34X(77,=IF(ISNA(C76),0,(C75/3600)*C76)) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C77', '=IF(ISNA(C76),0,(C75/3600)*C76)')
+->setCellValue('D77', '=IF(ISNA(D76),0,(D75/3600)*D76)')
+->setCellValue('E77', '=IF(ISNA(E76),0,(E75/3600)*E76)')
+->setCellValue('F77', '=IF(ISNA(F76),0,(F75/3600)*F76)')
+->setCellValue('G77', '=IF(ISNA(G76),0,(G75/3600)*G76)')
+->setCellValue('H77', '=IF(ISNA(H76),0,(H75/3600)*H76)')
+;
+
+
+// --- extendCell34X(83,=C80*C81*C82) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C83', '=C80*C81*C82')
+->setCellValue('D83', '=D80*D81*D82')
+->setCellValue('E83', '=E80*E81*E82')
+->setCellValue('F83', '=F80*F81*F82')
+->setCellValue('G83', '=G80*G81*G82')
+->setCellValue('H83', '=H80*H81*H82')
+;
+
+
+// --- extendCell34X(91,=C86*(C87+C88)*(1+(1-C89))*C90) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C91', '=C86*(C87+C88)*(1+(1-C89))*C90')
+->setCellValue('D91', '=D86*(D87+D88)*(1+(1-D89))*D90')
+->setCellValue('E91', '=E86*(E87+E88)*(1+(1-E89))*E90')
+->setCellValue('F91', '=F86*(F87+F88)*(1+(1-F89))*F90')
+->setCellValue('G91', '=G86*(G87+G88)*(1+(1-G89))*G90')
+->setCellValue('H91', '=H86*(H87+H88)*(1+(1-H89))*H90')
+;
+
+
+// --- extendCell34X(95,=C94) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C95', '=C94')
+->setCellValue('D95', '=D94')
+->setCellValue('E95', '=E94')
+->setCellValue('F95', '=F94')
+->setCellValue('G95', '=G94')
+->setCellValue('H95', '=H94')
+;
+
+
+// --- extendCell34X(99,=C98) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C99', '=C98')
+->setCellValue('D99', '=D98')
+->setCellValue('E99', '=E98')
+->setCellValue('F99', '=F98')
+->setCellValue('G99', '=G98')
+->setCellValue('H99', '=H98')
+;
+
+
+// --- extendCell34X(104,=C102+C103) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C104', '=C102+C103')
+->setCellValue('D104', '=D102+D103')
+->setCellValue('E104', '=E102+E103')
+->setCellValue('F104', '=F102+F103')
+->setCellValue('G104', '=G102+G103')
+->setCellValue('H104', '=H102+H103')
+;
+
+
+// --- extendCell34X(107,=C105*C106/100) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C107', '=C105*C106/100')
+->setCellValue('D107', '=D105*D106/100')
+->setCellValue('E107', '=E105*E106/100')
+->setCellValue('F107', '=F105*F106/100')
+->setCellValue('G107', '=G105*G106/100')
+->setCellValue('H107', '=H105*H106/100')
+;
+
+
+// --- extendCell34X(110,=C108+C109) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C110', '=C108+C109')
+->setCellValue('D110', '=D108+D109')
+->setCellValue('E110', '=E108+E109')
+->setCellValue('F110', '=F108+F109')
+->setCellValue('G110', '=G108+G109')
+->setCellValue('H110', '=H108+H109')
+;
+
+
 // --- makeColorFillStyle(A, {"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]})---
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
 $objPHPExcel->getActiveSheet()->getStyle('A28')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
