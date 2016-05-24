@@ -33,6 +33,16 @@ $tool->extendCell34X(44, "=C41/C43 ");
 $tool->extendCell34X(48, "=(C44+C45)*(1+(1-C47))/C16");  //  after fix
 
 $tool->extendCell34X(52, "=(C50/3600)*C51");
+//
+$tool->extendCell34X(56, "=(C54/3600)*C55");
+//=C56*(1+(1-C57/100))
+//$tool->extendCell34X(59, "=C56*(1+(1-C57/100))"); // TO FIX PERCENT
+$tool->extendCell34X(59, "=C56*(1+(1-C57))");
+
+// 63,64 SAME =(C61/3600)*C62'
+$tool->extendCell34X(63, "=(C61/3600)*C62");
+$tool->extendCell34X(64, "=(C61/3600)*C62");
+
 
 
 

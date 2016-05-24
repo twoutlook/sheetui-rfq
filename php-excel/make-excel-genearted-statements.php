@@ -209,6 +209,54 @@ $objPHPExcel->getActiveSheet()
 ;
 
 
+// --- extendCell34X(56,=(C54/3600)*C55) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C56', '=(C54/3600)*C55')
+->setCellValue('D56', '=(D54/3600)*D55')
+->setCellValue('E56', '=(E54/3600)*E55')
+->setCellValue('F56', '=(F54/3600)*F55')
+->setCellValue('G56', '=(G54/3600)*G55')
+->setCellValue('H56', '=(H54/3600)*H55')
+;
+
+
+// --- extendCell34X(59,=C56*(1+(1-C57))) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C59', '=C56*(1+(1-C57))')
+->setCellValue('D59', '=D56*(1+(1-D57))')
+->setCellValue('E59', '=E56*(1+(1-E57))')
+->setCellValue('F59', '=F56*(1+(1-F57))')
+->setCellValue('G59', '=G56*(1+(1-G57))')
+->setCellValue('H59', '=H56*(1+(1-H57))')
+;
+
+
+// --- extendCell34X(63,=(C61/3600)*C62) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C63', '=(C61/3600)*C62')
+->setCellValue('D63', '=(D61/3600)*D62')
+->setCellValue('E63', '=(E61/3600)*E62')
+->setCellValue('F63', '=(F61/3600)*F62')
+->setCellValue('G63', '=(G61/3600)*G62')
+->setCellValue('H63', '=(H61/3600)*H62')
+;
+
+
+// --- extendCell34X(64,=(C61/3600)*C62) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C64', '=(C61/3600)*C62')
+->setCellValue('D64', '=(D61/3600)*D62')
+->setCellValue('E64', '=(E61/3600)*E62')
+->setCellValue('F64', '=(F61/3600)*F62')
+->setCellValue('G64', '=(G61/3600)*G62')
+->setCellValue('H64', '=(H61/3600)*H62')
+;
+
+
 // --- makeColorFillStyle(A, {"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]})---
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
 $objPHPExcel->getActiveSheet()->getStyle('A28')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
