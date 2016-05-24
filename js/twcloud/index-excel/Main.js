@@ -1185,6 +1185,106 @@ Ext.onReady(function () {
 {sheet: 1, row: 77, col: 7, json: styleSubTotal({data: "=IF(ISNA(G76),0,(G75/3600)*G76)"})},
 {sheet: 1, row: 77, col: 8, json: styleSubTotal({data: "=IF(ISNA(H76),0,(H75/3600)*H76)"})}, 
 
+
+
+// --- extend73X(83, {sheet: 1, row: 83, col: 3, json: styleSubTotal({data: "=C80*C81*C82"})}, ) ---
+{sheet: 1, row: 83, col: 3, json: styleSubTotal({data: "=C80*C81*C82"})},
+{sheet: 1, row: 83, col: 4, json: styleSubTotal({data: "=D80*D81*D82"})},
+{sheet: 1, row: 83, col: 5, json: styleSubTotal({data: "=E80*E81*E82"})},
+{sheet: 1, row: 83, col: 6, json: styleSubTotal({data: "=F80*F81*F82"})},
+{sheet: 1, row: 83, col: 7, json: styleSubTotal({data: "=G80*G81*G82"})},
+{sheet: 1, row: 83, col: 8, json: styleSubTotal({data: "=H80*H81*H82"})},
+
+
+// --- extend73X(91, {sheet: 1, row: 91, col: 3, json: styleSubTotal({data: "=C86*(C87+C88)*(1+(1-C89/100))*C90"})}, ) ---
+{sheet: 1, row: 91, col: 3, json: styleSubTotal({data: "=C86*(C87+C88)*(1+(1-C89/100))*C90"})},
+{sheet: 1, row: 91, col: 4, json: styleSubTotal({data: "=D86*(D87+D88)*(1+(1-D89/100))*D90"})},
+{sheet: 1, row: 91, col: 5, json: styleSubTotal({data: "=E86*(E87+E88)*(1+(1-E89/100))*E90"})},
+{sheet: 1, row: 91, col: 6, json: styleSubTotal({data: "=F86*(F87+F88)*(1+(1-F89/100))*F90"})},
+{sheet: 1, row: 91, col: 7, json: styleSubTotal({data: "=G86*(G87+G88)*(1+(1-G89/100))*G90"})},
+{sheet: 1, row: 91, col: 8, json: styleSubTotal({data: "=H86*(H87+H88)*(1+(1-H89/100))*H90"})},
+
+
+// --- extend73X(95, {sheet: 1, row: 95, col: 3, json: styleSubTotal({data: "=C94"})}, ) ---
+{sheet: 1, row: 95, col: 3, json: styleSubTotal({data: "=C94"})},
+{sheet: 1, row: 95, col: 4, json: styleSubTotal({data: "=D94"})},
+{sheet: 1, row: 95, col: 5, json: styleSubTotal({data: "=E94"})},
+{sheet: 1, row: 95, col: 6, json: styleSubTotal({data: "=F94"})},
+{sheet: 1, row: 95, col: 7, json: styleSubTotal({data: "=G94"})},
+{sheet: 1, row: 95, col: 8, json: styleSubTotal({data: "=H94"})}, 
+
+
+
+// --- extend73X(98, {sheet: 1, row: 98, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=C97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}}, ) ---
+{sheet: 1, row: 98, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=C97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 98, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=D97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 98, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=E97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 98, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=F97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 98, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=G97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+{sheet: 1, row: 98, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=H97/3600*VLOOKUP('气密性测试',LOOKUP04!$A$2:$B$17,2,0)"}},
+
+
+// --- extend73X(99, {sheet: 1, row: 99, col: 3, json: styleSubTotal({data: "=C98"})}, ) ---
+{sheet: 1, row: 99, col: 3, json: styleSubTotal({data: "=C98"})},
+{sheet: 1, row: 99, col: 4, json: styleSubTotal({data: "=D98"})},
+{sheet: 1, row: 99, col: 5, json: styleSubTotal({data: "=E98"})},
+{sheet: 1, row: 99, col: 6, json: styleSubTotal({data: "=F98"})},
+{sheet: 1, row: 99, col: 7, json: styleSubTotal({data: "=G98"})},
+{sheet: 1, row: 99, col: 8, json: styleSubTotal({data: "=H98"})}, 
+
+// --- extend73X(102, {sheet: 1, row: 102, col: 3, json: styleSubTotal({data: "=C101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})}, ) ---
+{sheet: 1, row: 102, col: 3, json: styleSubTotal({data: "=C101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+{sheet: 1, row: 102, col: 4, json: styleSubTotal({data: "=D101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+{sheet: 1, row: 102, col: 5, json: styleSubTotal({data: "=E101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+{sheet: 1, row: 102, col: 6, json: styleSubTotal({data: "=F101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+{sheet: 1, row: 102, col: 7, json: styleSubTotal({data: "=G101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+{sheet: 1, row: 102, col: 8, json: styleSubTotal({data: "=H101/3600*VLOOKUP('筛选和包装',LOOKUP04!$A$2:$B$17,2,0)"})},
+
+
+// --- extend73X(104, {sheet: 1, row: 104, col: 3, json: styleSubTotal({data: "=C102+C103"})}, ) ---
+{sheet: 1, row: 104, col: 3, json: styleSubTotal({data: "=C102+C103"})},
+{sheet: 1, row: 104, col: 4, json: styleSubTotal({data: "=D102+D103"})},
+{sheet: 1, row: 104, col: 5, json: styleSubTotal({data: "=E102+E103"})},
+{sheet: 1, row: 104, col: 6, json: styleSubTotal({data: "=F102+F103"})},
+{sheet: 1, row: 104, col: 7, json: styleSubTotal({data: "=G102+G103"})},
+{sheet: 1, row: 104, col: 8, json: styleSubTotal({data: "=H102+H103"})},
+
+
+// --- extend73X(107, {sheet: 1, row: 107, col: 3, json: styleSubTotal({data: "=C105*C106/100"})}, ) ---
+{sheet: 1, row: 107, col: 3, json: styleSubTotal({data: "=C105*C106/100"})},
+{sheet: 1, row: 107, col: 4, json: styleSubTotal({data: "=D105*D106/100"})},
+{sheet: 1, row: 107, col: 5, json: styleSubTotal({data: "=E105*E106/100"})},
+{sheet: 1, row: 107, col: 6, json: styleSubTotal({data: "=F105*F106/100"})},
+{sheet: 1, row: 107, col: 7, json: styleSubTotal({data: "=G105*G106/100"})},
+{sheet: 1, row: 107, col: 8, json: styleSubTotal({data: "=H105*H106/100"})},
+
+
+// --- extend73X(110, {sheet: 1, row: 110, col: 3, json: styleSubTotal({data: "=C108+C109"})}, ) ---
+{sheet: 1, row: 110, col: 3, json: styleSubTotal({data: "=C108+C109"})},
+{sheet: 1, row: 110, col: 4, json: styleSubTotal({data: "=D108+D109"})},
+{sheet: 1, row: 110, col: 5, json: styleSubTotal({data: "=E108+E109"})},
+{sheet: 1, row: 110, col: 6, json: styleSubTotal({data: "=F108+F109"})},
+{sheet: 1, row: 110, col: 7, json: styleSubTotal({data: "=G108+G109"})},
+{sheet: 1, row: 110, col: 8, json: styleSubTotal({data: "=H108+H109"})},
+
+
+// --- extend73X(111, {sheet: 1, row: 111, col: 3, json: styleSubTotal({data: "=C105+C107+C110"})}, ) ---
+{sheet: 1, row: 111, col: 3, json: styleSubTotal({data: "=C105+C107+C110"})},
+{sheet: 1, row: 111, col: 4, json: styleSubTotal({data: "=D105+D107+D110"})},
+{sheet: 1, row: 111, col: 5, json: styleSubTotal({data: "=E105+E107+E110"})},
+{sheet: 1, row: 111, col: 6, json: styleSubTotal({data: "=F105+F107+F110"})},
+{sheet: 1, row: 111, col: 7, json: styleSubTotal({data: "=G105+G107+G110"})},
+{sheet: 1, row: 111, col: 8, json: styleSubTotal({data: "=H105+H107+H110"})},
+
+
+// --- extend73X(112, {sheet: 1, row: 112, col: 3, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(C111/6.35)"}}, ) ---
+{sheet: 1, row: 112, col: 3, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(C111/6.35)"}},
+{sheet: 1, row: 112, col: 4, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(D111/6.35)"}},
+{sheet: 1, row: 112, col: 5, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(E111/6.35)"}},
+{sheet: 1, row: 112, col: 6, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(F111/6.35)"}},
+{sheet: 1, row: 112, col: 7, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(G111/6.35)"}},
+{sheet: 1, row: 112, col: 8, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(H111/6.35)"}}, 
+
 // ------------ mark-tool-mainjs.php auto generate (end)  ---------------
 //
 //        
