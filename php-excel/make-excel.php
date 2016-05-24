@@ -36,16 +36,22 @@ $json_array = json_decode($data, true); // json_decode and json_encode not 100% 
 //}
 
 function getDesiredData($obj) {
-    $pos = (int) substr($obj["pos"], 1);
-    $cdefgh = substr($obj["pos"], 0, 1);
-    $colName = strtoupper($cdefgh);
-    if (strtoupper($cdefgh) >= "C" && strtoupper($cdefgh) >= "H") {
-        if ($pos == 23) {
-//            return "=SUM(" . $colName . "19:" . $colName . "22)";
-            return "=" . $colName . "19 + " . $colName . "22)";
+    $colName =  substr($obj["pos"],0, 1);
+    $rowNum = (int) substr($obj["pos"], 1);
+    
+ //    {"pos":"C34","data":"4%"}
+ //  {"pos":"C47","data":"91%"}
+    //
+    // NOTE: 
+    //
+    if (in_array($rowNum, array(47,57,68,89,106))){
+        if ($colName>="C" && $colName<="H" ){
+            $p1=str_replace("%","",$obj["data"]);
+            $p2=  doubleval(str_replace(",","",$p1));
+            $p3=$p2/100;
+            return $p3;
         }
     }
-
 
 
     $temp1 = $obj["data"];
@@ -214,14 +220,10 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('G')->setWidth($data_width);
 $objPHPExcel->getActiveSheet()->getColumnDimension('H')->setWidth($data_width);
 
 
+// NOTE︰ by Mark, 2016/5/4
+// 行數看是少，卻是處理最大量的信息。
 for ($i = 0; $i < count($json_array); $i++) {
-    //    $posAbc=$pos.substr(0, 1);
-//    $pos = $json_array[$i]['pos'];
-//    $pos123 = $pos . substr(1);
-//    $objPHPExcel->setActiveSheetIndex(0)
     $objPHPExcel->getActiveSheet()
-
-            //        ->setCellValue($json_array[$i]['pos'], $json_array[$i]['data']);
             ->setCellValue($json_array[$i]['pos'], getDesiredData($json_array[$i]));
 }
 
@@ -231,21 +233,13 @@ for ($i = 0; $i < count($json_array); $i++) {
 
 
 
-// B欄自動換行
+// 全部上下左右置中、自動換行
 $objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
         ->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER)
         ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER)
         ->setWrapText(true);
 //
-//$objPHPExcel->getActiveSheet()->getStyle('A1:H125')->getAlignment()
-//        ->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-//$objPHPExcel->setActiveSheetIndex(0)
-//        ->setCellValue('A1', $data)
-//        ->setCellValue('A2', "座標轉換的問題");
-// Rename worksheet
-//echo date('H:i:s') , " Rename worksheet" , EOL;
 $objPHPExcel->getActiveSheet()->setTitle('RFQ');
-
 
 // Set active sheet index to the first sheet, so Excel opens this as the first sheet
 $objPHPExcel->setActiveSheetIndex(0);

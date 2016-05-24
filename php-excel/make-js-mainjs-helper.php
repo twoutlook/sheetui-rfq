@@ -90,6 +90,11 @@ $tool->extend69();
 $tool->extend73X(41, '    {sheet: 1, row: 41, col: 3, json: styleSubTotal({data: "=IF(ISNA(VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0)),0,VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0))"})},  ');
 
 
+
+
+
+
+
 $tool->extend73X(73, '   {sheet: 1, row: 73, col: 3, json: styleSubTotal({data: setNaToZero("(C71/3600)*C72")})},');
 $tool->extend73X(77, '    {sheet: 1, row: 77, col: 3, json: styleSubTotal({data: "=IF(ISNA(C76),0,(C75/3600)*C76)"})},  ');
 $tool->extend73X(83, '      {sheet: 1, row: 83, col: 3, json: styleSubTotal({data: "=C80*C81*C82"})},  ');

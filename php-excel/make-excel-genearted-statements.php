@@ -2,6 +2,11 @@
 
 // makePercentFormat 0.00% ok, FORMAT_PERCENTAGE_00 為什麼不行?
 $objPHPExcel->getActiveSheet()->getStyle('C34:H34')->getNumberFormat()->setFormatCode("0.00%");
+$objPHPExcel->getActiveSheet()->getStyle('C47:H47')->getNumberFormat()->setFormatCode("0.00%");
+$objPHPExcel->getActiveSheet()->getStyle('C57:H57')->getNumberFormat()->setFormatCode("0.00%");
+$objPHPExcel->getActiveSheet()->getStyle('C68:H68')->getNumberFormat()->setFormatCode("0.00%");
+$objPHPExcel->getActiveSheet()->getStyle('C89:H89')->getNumberFormat()->setFormatCode("0.00%");
+$objPHPExcel->getActiveSheet()->getStyle('C106:H106')->getNumberFormat()->setFormatCode("0.00%");
 
 $objPHPExcel->getActiveSheet()
 ->setCellValue('C24', '=C23/6.35')
@@ -153,6 +158,42 @@ $objPHPExcel->getActiveSheet()
 ->setCellValue('F38', '=IF(ISNA(F32+F36+F37),0,(F32+F36+F37))')
 ->setCellValue('G38', '=IF(ISNA(G32+G36+G37),0,(G32+G36+G37))')
 ->setCellValue('H38', '=IF(ISNA(H32+H36+H37),0,(H32+H36+H37))')
+;
+
+
+// --- extendCell34X(43,=3600/C42) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C43', '=3600/C42')
+->setCellValue('D43', '=3600/D42')
+->setCellValue('E43', '=3600/E42')
+->setCellValue('F43', '=3600/F42')
+->setCellValue('G43', '=3600/G42')
+->setCellValue('H43', '=3600/H42')
+;
+
+
+// --- extendCell34X(44,=C41/C43 ) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C44', '=C41/C43 ')
+->setCellValue('D44', '=D41/D43 ')
+->setCellValue('E44', '=E41/E43 ')
+->setCellValue('F44', '=F41/F43 ')
+->setCellValue('G44', '=G41/G43 ')
+->setCellValue('H44', '=H41/H43 ')
+;
+
+
+// --- extendCell34X(48,=(C44+C45)*(1+(1-C47))/C16) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C48', '=(C44+C45)*(1+(1-C47))/C16')
+->setCellValue('D48', '=(D44+D45)*(1+(1-D47))/D16')
+->setCellValue('E48', '=(E44+E45)*(1+(1-E47))/E16')
+->setCellValue('F48', '=(F44+F45)*(1+(1-F47))/F16')
+->setCellValue('G48', '=(G44+G45)*(1+(1-G47))/G16')
+->setCellValue('H48', '=(H44+H45)*(1+(1-H47))/H16')
 ;
 
 

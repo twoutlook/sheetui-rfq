@@ -23,6 +23,16 @@ $tool->extendCell34X(34, "=100*C31*C16/(C31*C16+C33)/100"); //注意 EXCEL 和 E
 $tool->extendCell34X(36, "=(C30-C35)*C33/1000/C16");
 $tool->extendCell34X(37,  "=(C31+C33)*C30*0.02/1000/C16");
 $tool->extendCell34X(38, "=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))");
+//
+$tool->extendCell34X(43, "=3600/C42");
+$tool->extendCell34X(44, "=C41/C43 ");
+//$tool->extendCell34X(45, "  ");
+//$tool->extendCell34X(46, "  ");
+// 47 百分比要處理
+// $tool->extendCell34X(48, "=(C44+C45)*(1+(1-C47/100))/C16");  // before fix
+$tool->extendCell34X(48, "=(C44+C45)*(1+(1-C47))/C16");  //  after fix
+
+
 
 
 
@@ -202,7 +212,7 @@ class MarkTool {
 
     public function makePercentFormat() {
         echo "<br>// makePercentFormat 0.00% ok, FORMAT_PERCENTAGE_00 為什麼不行?<br>";
-        $strRmb = '[{"items":[34]}]';
+        $strRmb = '[{"items":[34,47,57,68,89,106]}]';
         $objRmb = json_decode($strRmb);
 
         foreach ($objRmb as $key => $obj) {
