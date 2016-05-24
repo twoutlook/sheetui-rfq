@@ -21,7 +21,7 @@ $tool->makeFormula34(34);
 $tool->makeFormula36(36);
 $tool->makeFormula37(37);
 $tool->makeFormula38(38);
-$tool->makeFormula41(41);
+
 $tool->makeFormula43(43);
 $tool->makeFormula44(44);
 $tool->makeFormula45(45);
@@ -84,6 +84,12 @@ $tool->makeFormula85(85);
 //$tool->extend67();
 $tool->extend69();
 //$tool->extend72();
+
+//=VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0)
+//=VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0)
+$tool->extend73X(41, '    {sheet: 1, row: 41, col: 3, json: styleSubTotal({data: "=IF(ISNA(VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0)),0,VLOOKUP(C40,LOOKUP2!$A$1:$C$100,2,0))"})},  ');
+
+
 $tool->extend73X(73, '   {sheet: 1, row: 73, col: 3, json: styleSubTotal({data: setNaToZero("(C71/3600)*C72")})},');
 $tool->extend73X(77, '    {sheet: 1, row: 77, col: 3, json: styleSubTotal({data: "=IF(ISNA(C76),0,(C75/3600)*C76)"})},  ');
 $tool->extend73X(83, '      {sheet: 1, row: 83, col: 3, json: styleSubTotal({data: "=C80*C81*C82"})},  ');
@@ -379,19 +385,6 @@ class MarkToolMainJs {
         }
     }
 
-    public function makeFormula41($row) {
-        $arrAtoH = [".", "A", "B", "C", "D", "E", "F", "G", "H"];
-        for ($i = 3; $i <= 8; $i++) {
-            $COL = $arrAtoH[$i];
-            // styleSubTotal({data: "=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))"})},
-            // replace C with ".$COL."
-
-            $data = "=IF(ISNA(" . $COL . "32+" . $COL . "36+" . $COL . "37),0,(" . $COL . "32+" . $COL . "36+" . $COL . "37))";
-            echo "     {sheet: 1, row: $row, col: $i,json:";
-            echo "   styleSubTotal({data: '$data'})},";
-            echo "     <br>";
-        }
-    }
 
     public function makeFormula43($row) {
         $arrAtoH = [".", "A", "B", "C", "D", "E", "F", "G", "H"];
