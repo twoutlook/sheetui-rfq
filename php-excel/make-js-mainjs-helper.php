@@ -81,11 +81,10 @@ $tool->makeInputRmb(109, [0.66, 0.11, 0.22, 0.33, 0.44, 0.55]);
 
 
 $tool->makeFormula85(85);
-$tool->extend67();
+//$tool->extend67();
 $tool->extend69();
-$tool->extend72();
+//$tool->extend72();
 $tool->extend73X(73, '   {sheet: 1, row: 73, col: 3, json: styleSubTotal({data: setNaToZero("(C71/3600)*C72")})},');
-$tool->extend73X(76, '     {sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)"}}, ');
 $tool->extend73X(77, '    {sheet: 1, row: 77, col: 3, json: styleSubTotal({data: "=IF(ISNA(C76),0,(C75/3600)*C76)"})},  ');
 $tool->extend73X(83, '      {sheet: 1, row: 83, col: 3, json: styleSubTotal({data: "=C80*C81*C82"})},  ');
 $tool->extend73X(91, '       {sheet: 1, row: 91, col: 3, json: styleSubTotal({data: "=C86*(C87+C88)*(1+(1-C89/100))*C90"})},  ');
@@ -113,6 +112,14 @@ $tool->extend73X(45, '  {sheet: 1, row: 45, col: 3, json: {fm: "money|¥|2|none"
 //     {sheet: 1, row: 46, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)"}},
 
 $tool->extend73X(46, ' {sheet: 1, row: 46, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)), \'\' , VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0))"}},');
+
+//       {sheet: 1, row: 67, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0)"}},
+$tool->extend73X(67, '  {sheet: 1, row: 67, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0)), \'\' ,VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0))"}},');
+
+//     {sheet: 1, row: 72, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0)"}},
+$tool->extend73X(72, '  {sheet: 1, row: 72, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0)), \'\' ,VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0))"}},');
+
+$tool->extend73X(76, '     {sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)), \'\'    ,VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0))"}}, ');
 
 class MarkToolMainJs {
     /*

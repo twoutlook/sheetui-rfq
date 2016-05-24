@@ -1320,6 +1320,36 @@ Ext.onReady(function () {
 {sheet: 1, row: 46, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(F40,LOOKUP2!$A$1:$C$100,3,0)), '' , VLOOKUP(F40,LOOKUP2!$A$1:$C$100,3,0))"}},
 {sheet: 1, row: 46, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(G40,LOOKUP2!$A$1:$C$100,3,0)), '' , VLOOKUP(G40,LOOKUP2!$A$1:$C$100,3,0))"}},
 {sheet: 1, row: 46, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(H40,LOOKUP2!$A$1:$C$100,3,0)), '' , VLOOKUP(H40,LOOKUP2!$A$1:$C$100,3,0))"}},
+// 
+
+// --- extend73X(67, {sheet: 1, row: 67, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0))"}},) ---
+{sheet: 1, row: 67, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C65,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 67, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(D65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(D65,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 67, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(E65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(E65,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 67, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(F65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(F65,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 67, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(G65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(G65,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 67, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(H65,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(H65,LOOKUP04!$A$2:$B$17,2,0))"}},
+
+
+// --- extend73X(72, {sheet: 1, row: 72, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0))"}},) ---
+{sheet: 1, row: 72, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C70,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 72, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(D70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(D70,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 72, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(E70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(E70,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 72, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(F70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(F70,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 72, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(G70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(G70,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 72, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(H70,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(H70,LOOKUP04!$A$2:$B$17,2,0))"}},// 
+
+
+// --- extend73X(76, {sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0))"}}, ) ---
+{sheet: 1, row: 76, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(C74,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 76, col: 4, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(D74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(D74,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 76, col: 5, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(E74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(E74,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 76, col: 6, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(F74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(F74,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 76, col: 7, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(G74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(G74,LOOKUP04!$A$2:$B$17,2,0))"}},
+{sheet: 1, row: 76, col: 8, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(H74,LOOKUP04!$A$2:$B$17,2,0)), '' ,VLOOKUP(H74,LOOKUP04!$A$2:$B$17,2,0))"}}, 
+
+
+
 // ------------ mark-tool-mainjs.php auto generate (end)  ---------------
 //
 //        
