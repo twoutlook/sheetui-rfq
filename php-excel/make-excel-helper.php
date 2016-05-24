@@ -21,7 +21,7 @@ $tool->makeMoneyStyle("$", $moneyArrUSD);
 $tool->makeCell32(32);
 $tool->extendCell34X(34, "=100*C31*C16/(C31*C16+C33)/100"); //注意 EXCEL 和 ENTERPRISESHEET 的百分比表達方式不同
 $tool->extendCell34X(36, "=(C30-C35)*C33/1000/C16");
-$tool->extendCell34X(37,  "=(C31+C33)*C30*0.02/1000/C16");
+$tool->extendCell34X(37, "=(C31+C33)*C30*0.02/1000/C16");
 $tool->extendCell34X(38, "=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))");
 //
 $tool->extendCell34X(43, "=3600/C42");
@@ -32,7 +32,7 @@ $tool->extendCell34X(44, "=C41/C43 ");
 // $tool->extendCell34X(48, "=(C44+C45)*(1+(1-C47/100))/C16");  // before fix
 $tool->extendCell34X(48, "=(C44+C45)*(1+(1-C47))/C16");  //  after fix
 
-
+$tool->extendCell34X(52, "=(C50/3600)*C51");
 
 
 

@@ -197,6 +197,18 @@ $objPHPExcel->getActiveSheet()
 ;
 
 
+// --- extendCell34X(52,=(C50/3600)*C51) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C52', '=(C50/3600)*C51')
+->setCellValue('D52', '=(D50/3600)*D51')
+->setCellValue('E52', '=(E50/3600)*E51')
+->setCellValue('F52', '=(F50/3600)*F51')
+->setCellValue('G52', '=(G50/3600)*G51')
+->setCellValue('H52', '=(H50/3600)*H51')
+;
+
+
 // --- makeColorFillStyle(A, {"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]})---
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
 $objPHPExcel->getActiveSheet()->getStyle('A28')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
