@@ -26,9 +26,19 @@ $tool->makeCell32(32);
 //    var colorDdl = "#F9E79F"; //#82E0AA  
 //    var colorInput = "#F4D03F"; // 
 //    var arrStepEnd = [23, 24, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111, 112];
-$colorJsonStr = '{"A9BCF5":[15,28,39],"E6E6E6":[23,38,48]}';
+$colorJsonStrStepStart = '{"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]}';
+$colorJsonStrStepEnd = '{"BE6E6E6":[23,38,48,52,59,64,69,73,77,83,91,95,99,104]}';
 
-$tool->makeColorFillStyle("B", $colorJsonStr);
+$tool->makeColorFillStyle("A", $colorJsonStrStepStart);
+$tool->makeColorFillStyle("B", $colorJsonStrStepStart);
+$tool->makeColorFillStyle("B", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("C", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("D", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("E", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("F", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("G", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("H", $colorJsonStrStepEnd);
+
 
 class MarkTool {
     /*
@@ -142,9 +152,9 @@ class MarkTool {
     // http://www.cnblogs.com/freespider/p/3284828.html
     // for column B only
     public function makeColorFillStyle($col, $str) {
+        echo "<br><br>// ---  makeColorFillStyle($col, $str)---<br> ";
         $json = json_decode($str);
-        print_r($json);
-
+//        print_r($json);
         //$objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
 //        ->getStartColor()->setARGB('FFA9BCF5');
 
@@ -153,7 +163,7 @@ class MarkTool {
 //            print_r($val);
             foreach ($val as $item) {
 //                 echo $item;
-                $str = "\$objPHPExcel->getActiveSheet()->getStyle('B$item')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)";
+                $str = "\$objPHPExcel->getActiveSheet()->getStyle('$col$item')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)";
                 $str.=" ->getStartColor()->setARGB('$key');<br>";
                 echo $str;
             }
