@@ -137,8 +137,7 @@ fclose($debug005);
 
 
 function getHttpToDownload($stamp) {
-    $stamp = time();
-
+    //  $stamp = time(); // GOT THE KILLER ...VERY HAPPY!!!
 //    echo "<h1>$stamp</h1>";
     $host = $_SERVER['HTTP_HOST'];
 //    echo "<h1>$host</h1>";
@@ -302,46 +301,43 @@ $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 //
 include 'make-excel-genearted-statements.php';
 
-// ABCD
+// 如果沒有項目料號，就不顯示。
+// 實際做法是把該Column內容清空，顏色為白。
+// ABC....
+// ABCDEFGH
 if (substr($isDataInCol, 3, 1) == '.') {
-    for ($i=1;$i<=125;$i++){
+    for ($i = 1; $i <= 125; $i++) {
         $objPHPExcel->getActiveSheet()->setCellValue("D$i", '');
+        $objPHPExcel->getActiveSheet()->getStyle("D$i")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF');
     }
 }
 if (substr($isDataInCol, 4, 1) == '.') {
-    for ($i=1;$i<=125;$i++){
+    for ($i = 1; $i <= 125; $i++) {
         $objPHPExcel->getActiveSheet()->setCellValue("E$i", '');
+        $objPHPExcel->getActiveSheet()->getStyle("E$i")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF');
     }
 }
 if (substr($isDataInCol, 5, 1) == '.') {
-    for ($i=1;$i<=125;$i++){
+    for ($i = 1; $i <= 125; $i++) {
         $objPHPExcel->getActiveSheet()->setCellValue("F$i", '');
+        $objPHPExcel->getActiveSheet()->getStyle("F$i")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF');
     }
 }
 if (substr($isDataInCol, 6, 1) == '.') {
-    for ($i=1;$i<=125;$i++){
+    for ($i = 1; $i <= 125; $i++) {
         $objPHPExcel->getActiveSheet()->setCellValue("G$i", '');
+        $objPHPExcel->getActiveSheet()->getStyle("G$i")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF');
     }
 }
 if (substr($isDataInCol, 7, 1) == '.') {
-    for ($i=1;$i<=125;$i++){
+    for ($i = 1; $i <= 125; $i++) {
         $objPHPExcel->getActiveSheet()->setCellValue("H$i", '');
+        $objPHPExcel->getActiveSheet()->getStyle("H$i")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFFFF');
     }
 }
 
 
 
-/*
-  var colorStep = "#A9BCF5";
-  var colorStepEnd = "#E6E6E6";
-  var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
-  var colorDdl = "#F9E79F"; //#82E0AA
-  var colorInput = "#F4D03F"; //
-  //
- */
-$objPHPExcel->getActiveSheet()->getStyle('A1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)
-        ->getStartColor()->setARGB('FFA9BCF5');
-//echo "debug ...$defaultOutputFile";
 $objWriter->save($defaultOutputFile);
 //$objWriter->save(str_replace('.php', '.xlsx', __FILE__));
 

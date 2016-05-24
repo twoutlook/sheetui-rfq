@@ -28,6 +28,8 @@ $tool->makeCell32(32);
 //    var arrStepEnd = [23, 24, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111, 112];
 $colorJsonStrStepStart = '{"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]}';
 $colorJsonStrStepEnd = '{"BE6E6E6":[23,38,48,52,59,64,69,73,77,83,91,95,99,104]}';
+$jsonDdl='{"F9E79F":[10,12,29,40,65,70,74,79,85]}';
+$jsonInput='{"F4D03F":[11,16,19,20,21,22,33,42,47,50,54,57,61,66,68,71,75,80,81,82,86,87,88,89,90,93,94,97,101,103,106,108,109]}';
 
 $tool->makeColorFillStyle("A", $colorJsonStrStepStart);
 $tool->makeColorFillStyle("B", $colorJsonStrStepStart);
@@ -38,6 +40,18 @@ $tool->makeColorFillStyle("E", $colorJsonStrStepEnd);
 $tool->makeColorFillStyle("F", $colorJsonStrStepEnd);
 $tool->makeColorFillStyle("G", $colorJsonStrStepEnd);
 $tool->makeColorFillStyle("H", $colorJsonStrStepEnd);
+$tool->makeColorFillStyle("C", $jsonDdl);
+$tool->makeColorFillStyle("D", $jsonDdl);
+$tool->makeColorFillStyle("E", $jsonDdl);
+$tool->makeColorFillStyle("F", $jsonDdl);
+$tool->makeColorFillStyle("G", $jsonDdl);
+$tool->makeColorFillStyle("H", $jsonDdl);
+$tool->makeColorFillStyle("C", $jsonInput);
+$tool->makeColorFillStyle("D", $jsonInput);
+$tool->makeColorFillStyle("E", $jsonInput);
+$tool->makeColorFillStyle("F", $jsonInput);
+$tool->makeColorFillStyle("G", $jsonInput);
+$tool->makeColorFillStyle("H", $jsonInput);
 
 
 class MarkTool {
