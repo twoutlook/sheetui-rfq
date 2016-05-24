@@ -8,6 +8,7 @@ error_reporting(E_ALL);
 
 $tool = new MarkTool();
 echo '&lt;?php <br>';
+$tool->makePercentFormat();
 $tool->makeUsd();
 $tool->makeSum(); //
 //$tool->makeRmbStyle(); //makeRmbStyle
@@ -18,8 +19,19 @@ echo "<br> // USD<br> ";
 $moneyArrUSD = '[{"items":[24,112]}]';
 $tool->makeMoneyStyle("$", $moneyArrUSD);
 $tool->makeCell32(32);
+$tool->extendCell34X(34, "=100*C31*C16/(C31*C16+C33)/100"); //注意 EXCEL 和 ENTERPRISESHEET 的百分比表達方式不同
+$tool->extendCell34X(36, "=(C30-C35)*C33/1000/C16");
+$tool->extendCell34X(37,  "=(C31+C33)*C30*0.02/1000/C16");
+$tool->extendCell34X(38, "=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))");
 
 
+
+
+//
+//
+//
+//
+//
 //    var colorStep = "#A9BCF5";
 //    var colorStepEnd = "#E6E6E6";
 //    var colorSect = "#837E7C"; //bgc: colorSect, fm: "money|¥|2|none", dsd: "ed", cal: true
@@ -28,9 +40,9 @@ $tool->makeCell32(32);
 //    var arrStepEnd = [23, 24, 38, 48, 52, 59, 64, 69, 73, 77, 83, 91, 95, 99, 104, 105, 110, 111, 112];
 $colorJsonStrStepStart = '{"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]}';
 $colorJsonStrStepEnd = '{"BE6E6E6":[23,38,48,52,59,64,69,73,77,83,91,95,99,104,110]}';
-$jsonDdl='{"F9E79F":[10,12,29,40,65,70,74,79,85]}';
-$jsonInput='{"F4D03F":[11,16,19,20,21,22,33,42,47,50,54,57,61,66,68,71,75,80,81,82,86,87,88,89,90,93,94,97,101,103,106,108,109]}';
-$jsonBigTotal='{"cccccc":[23,24,105,111,112]}';
+$jsonDdl = '{"F9E79F":[10,12,29,40,65,70,74,79,85]}';
+$jsonInput = '{"F4D03F":[11,16,19,20,21,22,33,42,47,50,54,57,61,66,68,71,75,80,81,82,86,87,88,89,90,93,94,97,101,103,106,108,109]}';
+$jsonBigTotal = '{"cccccc":[23,24,105,111,112]}';
 
 $tool->makeColorFillStyle("A", $colorJsonStrStepStart);
 $tool->makeColorFillStyle("B", $colorJsonStrStepStart);
@@ -83,6 +95,41 @@ class MarkTool {
             $str.="  ->setCellValue('$colRow', '$cell') <br>";
         }
         echo $str . ";";
+    }
+
+    //=100*C31*C16/(C31*C16+C33)
+//      public function makeCell34X($rowNum,$cellFormula) {
+//        $colNameArr = Array("C", "D", "E", "F", "G", "H");
+//        $str = " <br> \$objPHPExcel->getActiveSheet() <br>";
+//        for ($i = 0; $i < 6; $i++) {
+//            $colName = $colNameArr[$i];
+//            //=C30*C31/1000
+//            $colRow = $colName . $row;
+//            $cell = "=" . $colName . "30*" . $colName . "31/1000";
+//            $str.="  ->setCellValue('$colRow', '$cell') <br>";
+//        }
+//        echo $str . ";";
+//    }
+
+
+    public function extendCell34X($rowNum, $cellFormula) {
+        echo "<br><br>// ---  extendCell34X($rowNum,$cellFormula) ---<br>";
+
+        $seq = "0ABCDEFGH";
+        echo " <br> \$objPHPExcel->getActiveSheet() <br>";
+        echo "->setCellValue('C$rowNum', '$cellFormula')<br>";
+        for ($k = 4; $k <= 8; $k++) {
+            //    $strD = str_replace("col: 3", "col: $k", $cellFormula);
+            $colName = substr($seq, $k, 1);
+            $newCellformula = $cellFormula;
+            for ($item = 1; $item < 115; $item++) {
+                $oldStr = "C$item";
+                $newStr = $colName . $item;
+                $newCellformula = str_replace($oldStr, $newStr, $newCellformula);
+            }
+            echo "->setCellValue('$colName$rowNum', '$newCellformula')<br>";
+        }
+        echo ";<br>";
     }
 
     public function makeUsd() {
@@ -148,6 +195,23 @@ class MarkTool {
 //                $str = " <br> \$objPHPExcel->getActiveSheet()->duplicateConditionalStyle( <br>";
 //                $str.= "  \$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C" . $items[$j] . ":H" . $items[$j];
                 $str = "\$objPHPExcel->getActiveSheet()->getStyle('C" . $items[$j] . ":H" . $items[$j] . "')->getNumberFormat()->setFormatCode(\"¥#,##0.00\")";
+                echo $str . ";<br>";
+            }
+        }
+    }
+
+    public function makePercentFormat() {
+        echo "<br>// makePercentFormat 0.00% ok, FORMAT_PERCENTAGE_00 為什麼不行?<br>";
+        $strRmb = '[{"items":[34]}]';
+        $objRmb = json_decode($strRmb);
+
+        foreach ($objRmb as $key => $obj) {
+
+            $items = $obj->items;
+            for ($j = 0; $j < count($items); $j++) {
+//                $str = " <br> \$objPHPExcel->getActiveSheet()->duplicateConditionalStyle( <br>";
+//                $str.= "  \$objPHPExcel->getActiveSheet()->getStyle('C19')->getConditionalStyles(), 'C" . $items[$j] . ":H" . $items[$j];
+                $str = "\$objPHPExcel->getActiveSheet()->getStyle('C" . $items[$j] . ":H" . $items[$j] . "')->getNumberFormat()->setFormatCode(\"0.00%\")";
                 echo $str . ";<br>";
             }
         }

@@ -1,5 +1,8 @@
 <?php
 
+// makePercentFormat 0.00% ok, FORMAT_PERCENTAGE_00 為什麼不行?
+$objPHPExcel->getActiveSheet()->getStyle('C34:H34')->getNumberFormat()->setFormatCode("0.00%");
+
 $objPHPExcel->getActiveSheet()
 ->setCellValue('C24', '=C23/6.35')
 ->setCellValue('D24', '=D23/6.35')
@@ -104,6 +107,54 @@ $objPHPExcel->getActiveSheet()
 ->setCellValue('G32', '=G30*G31/1000')
 ->setCellValue('H32', '=H30*H31/1000')
 ;
+
+// --- extendCell34X(34,=100*C31*C16/(C31*C16+C33)/100) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C34', '=100*C31*C16/(C31*C16+C33)/100')
+->setCellValue('D34', '=100*D31*D16/(D31*D16+D33)/100')
+->setCellValue('E34', '=100*E31*E16/(E31*E16+E33)/100')
+->setCellValue('F34', '=100*F31*F16/(F31*F16+F33)/100')
+->setCellValue('G34', '=100*G31*G16/(G31*G16+G33)/100')
+->setCellValue('H34', '=100*H31*H16/(H31*H16+H33)/100')
+;
+
+
+// --- extendCell34X(36,=(C30-C35)*C33/1000/C16) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C36', '=(C30-C35)*C33/1000/C16')
+->setCellValue('D36', '=(D30-D35)*D33/1000/D16')
+->setCellValue('E36', '=(E30-E35)*E33/1000/E16')
+->setCellValue('F36', '=(F30-F35)*F33/1000/F16')
+->setCellValue('G36', '=(G30-G35)*G33/1000/G16')
+->setCellValue('H36', '=(H30-H35)*H33/1000/H16')
+;
+
+
+// --- extendCell34X(37,=(C31+C33)*C30*0.02/1000/C16) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C37', '=(C31+C33)*C30*0.02/1000/C16')
+->setCellValue('D37', '=(D31+D33)*D30*0.02/1000/D16')
+->setCellValue('E37', '=(E31+E33)*E30*0.02/1000/E16')
+->setCellValue('F37', '=(F31+F33)*F30*0.02/1000/F16')
+->setCellValue('G37', '=(G31+G33)*G30*0.02/1000/G16')
+->setCellValue('H37', '=(H31+H33)*H30*0.02/1000/H16')
+;
+
+
+// --- extendCell34X(38,=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))) ---
+
+$objPHPExcel->getActiveSheet()
+->setCellValue('C38', '=IF(ISNA(C32+C36+C37),0,(C32+C36+C37))')
+->setCellValue('D38', '=IF(ISNA(D32+D36+D37),0,(D32+D36+D37))')
+->setCellValue('E38', '=IF(ISNA(E32+E36+E37),0,(E32+E36+E37))')
+->setCellValue('F38', '=IF(ISNA(F32+F36+F37),0,(F32+F36+F37))')
+->setCellValue('G38', '=IF(ISNA(G32+G36+G37),0,(G32+G36+G37))')
+->setCellValue('H38', '=IF(ISNA(H32+H36+H37),0,(H32+H36+H37))')
+;
+
 
 // --- makeColorFillStyle(A, {"A9BCF5":[15,28,39,49,53,60,65,70,74,78,84,92,96,100]})---
 $objPHPExcel->getActiveSheet()->getStyle('A15')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID) ->getStartColor()->setARGB('A9BCF5');
