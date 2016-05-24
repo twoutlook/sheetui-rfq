@@ -13,11 +13,11 @@ $tool->makeDdl();
 $tool->makeFormula23(23);
 $tool->makeFormula24(24);
 $tool->makeFormula29(29);
-$tool->makeFormula30(30);
+//$tool->makeFormula30(30);
 $tool->makeFormula31(31);
 $tool->makeFormula32(32);
 $tool->makeFormula34(34);
-$tool->makeFormula35(35);
+//$tool->makeFormula35(35);
 $tool->makeFormula36(36);
 $tool->makeFormula37(37);
 $tool->makeFormula38(38);
@@ -103,7 +103,16 @@ $tool->extend73X(110, '      {sheet: 1, row: 110, col: 3, json: styleSubTotal({d
 $tool->extend73X(111, '      {sheet: 1, row: 111, col: 3, json: styleSubTotal({data: "=C105+C107+C110"})}, ');
 $tool->extend73X(112, '          {sheet: 1, row: 112, col: 3, json: {fm: "money|$|2|none", dsd: "ed", cal: true, data: "=(C111/6.35)"}}, ');
 
+$tool->extend73X(30, ' {sheet: 1, row: 30, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C10,LOOKUP!$A$3:$C$20,2,0)),\'\',VLOOKUP(C10,LOOKUP!$A$3:$C$20,2,0))"}},');
+$tool->extend73X(35, '{sheet: 1, row: 35, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C10,LOOKUP!$A$3:$C$20,3,0)),\'\' ,VLOOKUP(C10,LOOKUP!$A$3:$C$20,3,0))"}},');
 
+
+//       {sheet: 1, row: 45, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)/C43"}},
+// 
+$tool->extend73X(45, '  {sheet: 1, row: 45, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)/C43), \'\'  ,VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)/C43)"}},');
+//     {sheet: 1, row: 46, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)"}},
+
+$tool->extend73X(46, ' {sheet: 1, row: 46, col: 3, json: {fm: "money|¥|2|none", dsd: "ed", cal: true, data: "=IF(ISNA(VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0)), \'\' , VLOOKUP(C40,LOOKUP2!$A$1:$C$100,3,0))"}},');
 
 class MarkToolMainJs {
     /*
