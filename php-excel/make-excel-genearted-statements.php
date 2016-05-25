@@ -353,15 +353,15 @@ $objPHPExcel->getActiveSheet()
 ;
 
 
-// --- extendCell34X(107,=C105*C106/100) ---
+// --- extendCell34X(107,=C105*C106) ---
 
 $objPHPExcel->getActiveSheet()
-->setCellValue('C107', '=C105*C106/100')
-->setCellValue('D107', '=D105*D106/100')
-->setCellValue('E107', '=E105*E106/100')
-->setCellValue('F107', '=F105*F106/100')
-->setCellValue('G107', '=G105*G106/100')
-->setCellValue('H107', '=H105*H106/100')
+->setCellValue('C107', '=C105*C106')
+->setCellValue('D107', '=D105*D106')
+->setCellValue('E107', '=E105*E106')
+->setCellValue('F107', '=F105*F106')
+->setCellValue('G107', '=G105*G106')
+->setCellValue('H107', '=H105*H106')
 ;
 
 

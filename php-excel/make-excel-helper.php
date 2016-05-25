@@ -76,7 +76,9 @@ $tool->extendCell34X(104, "=C102+C103");
 
 //107
 //
-$tool->extendCell34X(107, "=C105*C106/100");
+//$tool->extendCell34X(107, "=C105*C106/100");
+$tool->extendCell34X(107, "=C105*C106");
+
 
 //110
 //
